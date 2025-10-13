@@ -106,6 +106,17 @@
       },
       "source": "./plugins/onboarding-assistant",
       "category": "user-experience"
+    },
+    {
+      "name": "code-architect",
+      "description": "Generate comprehensive architecture documentation with dependency graphs, visualizations, C4 models, UML diagrams, and system design docs using MCP servers",
+      "version": "1.0.0",
+      "author": {
+        "name": "Yannick De Backer",
+        "email": "yannick@kobozo.eu"
+      },
+      "source": "./plugins/code-architect",
+      "category": "documentation"
     }
   ]
 }
