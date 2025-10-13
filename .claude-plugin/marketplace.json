@@ -95,6 +95,17 @@
       },
       "source": "./plugins/i18n-manager",
       "category": "localization"
+    },
+    {
+      "name": "onboarding-assistant",
+      "description": "Create interactive user onboarding experiences - guided tours, product walkthroughs, tooltips, and step-by-step flows",
+      "version": "1.0.0",
+      "author": {
+        "name": "Yannick De Backer",
+        "email": "yannick@kobozo.eu"
+      },
+      "source": "./plugins/onboarding-assistant",
+      "category": "user-experience"
     }
   ]
 }
