@@ -5,5 +5,11 @@
   "author": {
     "name": "Yannick De Backer",
     "email": "yannick@kobozo.eu"
+  },
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    }
   }
 }
