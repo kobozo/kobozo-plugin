@@ -1,0 +1,9 @@
+{
+  "name": "performance-optimizer",
+  "version": "1.0.0",
+  "description": "Analyze and optimize application performance - identify bottlenecks, reduce bundle sizes, and optimize database queries",
+  "author": {
+    "name": "Yannick De Backer",
+    "email": "yannick@kobozo.eu"
+  }
+}

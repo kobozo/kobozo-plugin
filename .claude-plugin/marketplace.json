@@ -51,6 +51,17 @@
       },
       "source": "./plugins/security-auditor",
       "category": "security"
+    },
+    {
+      "name": "performance-optimizer",
+      "description": "Analyze and optimize application performance - identify bottlenecks, reduce bundle sizes, and optimize database queries",
+      "version": "1.0.0",
+      "author": {
+        "name": "Yannick De Backer",
+        "email": "yannick@kobozo.eu"
+      },
+      "source": "./plugins/performance-optimizer",
+      "category": "performance"
     }
   ]
 }
