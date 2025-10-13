@@ -1,0 +1,9 @@
+{
+  "name": "api-documenter",
+  "version": "1.0.0",
+  "description": "Automatically generate and maintain API documentation with OpenAPI/Swagger specs and human-readable docs",
+  "author": {
+    "name": "Yannick De Backer",
+    "email": "yannick@kobozo.eu"
+  }
+}

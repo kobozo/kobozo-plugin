@@ -18,6 +18,17 @@
       },
       "source": "./plugins/ui-checker",
       "category": "testing"
+    },
+    {
+      "name": "api-documenter",
+      "description": "Automatically generate and maintain API documentation with OpenAPI/Swagger specs and human-readable docs",
+      "version": "1.0.0",
+      "author": {
+        "name": "Yannick De Backer",
+        "email": "yannick@kobozo.eu"
+      },
+      "source": "./plugins/api-documenter",
+      "category": "documentation"
     }
   ]
 }
