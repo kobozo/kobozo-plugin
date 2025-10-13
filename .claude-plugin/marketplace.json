@@ -84,6 +84,17 @@
       },
       "source": "./plugins/db-schema-manager",
       "category": "database"
+    },
+    {
+      "name": "i18n-manager",
+      "description": "Manage internationalization - extract translations, validate locales, optimize i18n configuration, and detect missing translations",
+      "version": "1.0.0",
+      "author": {
+        "name": "Yannick De Backer",
+        "email": "yannick@kobozo.eu"
+      },
+      "source": "./plugins/i18n-manager",
+      "category": "localization"
     }
   ]
 }
