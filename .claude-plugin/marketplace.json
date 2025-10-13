@@ -1,0 +1,23 @@
+{
+  "$schema": "https://github.com/anthropics/claude-code/blob/main/schemas/marketplace.schema.json",
+  "name": "kobozo-plugins",
+  "version": "1.0.0",
+  "description": "Kobozo's custom Claude Code plugins for UI development and style guide management",
+  "owner": {
+    "name": "Yannick De Backer",
+    "email": "yannick@kobozo.eu"
+  },
+  "plugins": [
+    {
+      "name": "ui-checker",
+      "description": "Automated UI validation against style guides using Playwright, with tools to create and maintain design system documentation",
+      "version": "1.0.0",
+      "author": {
+        "name": "Yannick De Backer",
+        "email": "yannick@kobozo.eu"
+      },
+      "source": "./plugins/ui-checker",
+      "category": "testing"
+    }
+  ]
+}

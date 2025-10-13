@@ -1,0 +1,9 @@
+{
+  "name": "ui-checker",
+  "version": "1.0.0",
+  "description": "Automated UI validation against style guides using Playwright, with tools to create and maintain design system documentation",
+  "author": {
+    "name": "Yannick De Backer",
+    "email": "yannick@kobozo.eu"
+  }
+}
