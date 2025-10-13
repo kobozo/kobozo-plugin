@@ -1,0 +1,9 @@
+{
+  "name": "test-suite-generator",
+  "version": "1.0.0",
+  "description": "Generate comprehensive test suites with high coverage - unit tests, integration tests, and coverage analysis",
+  "author": {
+    "name": "Yannick De Backer",
+    "email": "yannick@kobozo.eu"
+  }
+}
