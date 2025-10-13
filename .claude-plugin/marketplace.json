@@ -73,6 +73,17 @@
       },
       "source": "./plugins/data-privacy-manager",
       "category": "compliance"
+    },
+    {
+      "name": "db-schema-manager",
+      "description": "Manage database schemas - analyze relationships, generate migrations, detect issues, and design optimal data models",
+      "version": "1.0.0",
+      "author": {
+        "name": "Yannick De Backer",
+        "email": "yannick@kobozo.eu"
+      },
+      "source": "./plugins/db-schema-manager",
+      "category": "database"
     }
   ]
 }

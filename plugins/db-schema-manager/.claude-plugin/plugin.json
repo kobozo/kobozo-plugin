@@ -1,0 +1,10 @@
+{
+  "$schema": "https://github.com/anthropics/claude-code/blob/main/schemas/plugin.schema.json",
+  "name": "db-schema-manager",
+  "version": "1.0.0",
+  "description": "Manage database schemas, generate migrations, analyze relationships, and design optimal data models",
+  "author": {
+    "name": "Yannick De Backer",
+    "email": "yannick@kobozo.eu"
+  }
+}
