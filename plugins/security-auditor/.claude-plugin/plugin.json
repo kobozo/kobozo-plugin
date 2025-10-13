@@ -1,0 +1,9 @@
+{
+  "name": "security-auditor",
+  "version": "1.0.0",
+  "description": "Scan for security vulnerabilities, check dependencies, and validate authentication/authorization implementations",
+  "author": {
+    "name": "Yannick De Backer",
+    "email": "yannick@kobozo.eu"
+  }
+}

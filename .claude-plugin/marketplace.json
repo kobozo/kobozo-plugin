@@ -40,6 +40,17 @@
       },
       "source": "./plugins/test-suite-generator",
       "category": "testing"
+    },
+    {
+      "name": "security-auditor",
+      "description": "Scan for security vulnerabilities, check dependencies, and validate authentication/authorization implementations",
+      "version": "1.0.0",
+      "author": {
+        "name": "Yannick De Backer",
+        "email": "yannick@kobozo.eu"
+      },
+      "source": "./plugins/security-auditor",
+      "category": "security"
     }
   ]
 }
