@@ -1,8 +1,8 @@
 {
   "$schema": "https://github.com/anthropics/claude-code/blob/main/schemas/plugin.schema.json",
   "name": "i18n-manager",
-  "version": "1.0.0",
-  "description": "Manage internationalization and localization - extract translations, validate locales, optimize i18n configuration, and detect missing translations",
+  "version": "1.1.0",
+  "description": "Manage internationalization and localization - extract translations, validate locales, optimize i18n configuration, migrate hardcoded strings, and detect missing translations",
   "author": {
     "name": "Yannick De Backer",
     "email": "yannick@kobozo.eu"
