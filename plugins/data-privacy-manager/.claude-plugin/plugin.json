@@ -1,0 +1,10 @@
+{
+  "$schema": "https://github.com/anthropics/claude-code/blob/main/schemas/plugin.schema.json",
+  "name": "data-privacy-manager",
+  "version": "1.0.0",
+  "description": "Manage data privacy compliance, GDPR requirements, data anonymization, and privacy policy generation",
+  "author": {
+    "name": "Yannick De Backer",
+    "email": "yannick@kobozo.eu"
+  }
+}

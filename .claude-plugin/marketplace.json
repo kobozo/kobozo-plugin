@@ -62,6 +62,17 @@
       },
       "source": "./plugins/performance-optimizer",
       "category": "performance"
+    },
+    {
+      "name": "data-privacy-manager",
+      "description": "Manage data privacy compliance - GDPR audits, data anonymization, privacy policy generation, and consent management",
+      "version": "1.0.0",
+      "author": {
+        "name": "Yannick De Backer",
+        "email": "yannick@kobozo.eu"
+      },
+      "source": "./plugins/data-privacy-manager",
+      "category": "compliance"
     }
   ]
 }
