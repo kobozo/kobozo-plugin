@@ -117,6 +117,17 @@
       },
       "source": "./plugins/code-architect",
       "category": "documentation"
+    },
+    {
+      "name": "clean-code-checker",
+      "description": "Detect code duplication, identify code smells, enforce clean code principles (SOLID, DRY), and provide refactoring recommendations using jscpd, ESLint, and SonarQube MCP",
+      "version": "1.0.0",
+      "author": {
+        "name": "Yannick De Backer",
+        "email": "yannick@kobozo.eu"
+      },
+      "source": "./plugins/clean-code-checker",
+      "category": "code-quality"
     }
   ]
 }
