@@ -10,8 +10,8 @@
   "plugins": [
     {
       "name": "ui-checker",
-      "description": "Automated UI validation against style guides using Playwright, with tools to create and maintain design system documentation",
-      "version": "1.0.0",
+      "description": "Automated UI validation and creation - validate against style guides with Playwright, create beautiful React components with Tailwind CSS, manage design systems following Loveable's approach",
+      "version": "2.0.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
