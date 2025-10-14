@@ -1,0 +1,15 @@
+{
+  "name": "docker-compose-manager",
+  "version": "1.0.0",
+  "description": "Manage Docker Compose environments with nginx routing - orchestrate containers, configure reverse proxy, and manage multi-service deployments using Docker MCP",
+  "author": {
+    "name": "Yannick De Backer",
+    "email": "yannick@kobozo.eu"
+  },
+  "mcpServers": {
+    "docker": {
+      "command": "npx",
+      "args": ["-y", "@quantgeekdev/docker-mcp"]
+    }
+  }
+}
