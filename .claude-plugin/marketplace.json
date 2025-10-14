@@ -139,6 +139,17 @@
       },
       "source": "./plugins/documentation-writer",
       "category": "documentation"
+    },
+    {
+      "name": "bug-fixer",
+      "description": "Comprehensive bug fixing workflow - analyze root causes, design robust fixes, validate with tests, prevent regressions using specialized agents",
+      "version": "1.0.0",
+      "author": {
+        "name": "Yannick De Backer",
+        "email": "yannick@kobozo.eu"
+      },
+      "source": "./plugins/bug-fixer",
+      "category": "development"
     }
   ]
 }
