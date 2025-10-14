@@ -1,0 +1,10 @@
+{
+  "$schema": "https://github.com/anthropics/claude-code/blob/main/schemas/plugin.schema.json",
+  "name": "documentation-writer",
+  "version": "1.0.0",
+  "description": "Generate comprehensive documentation for GitHub wikis - technical docs, API references, tutorials, and guides written to ./docs directory",
+  "author": {
+    "name": "Yannick De Backer",
+    "email": "yannick@kobozo.eu"
+  }
+}

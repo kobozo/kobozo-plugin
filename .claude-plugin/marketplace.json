@@ -128,6 +128,17 @@
       },
       "source": "./plugins/clean-code-checker",
       "category": "code-quality"
+    },
+    {
+      "name": "documentation-writer",
+      "description": "Generate comprehensive technical documentation for GitHub wikis - write feature docs, API references, architecture guides, and tutorials to ./docs directory",
+      "version": "1.0.0",
+      "author": {
+        "name": "Yannick De Backer",
+        "email": "yannick@kobozo.eu"
+      },
+      "source": "./plugins/documentation-writer",
+      "category": "documentation"
     }
   ]
 }
