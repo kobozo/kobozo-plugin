@@ -2,7 +2,7 @@
 name: solution-architect
 description: Designs comprehensive solution architectures based on research findings, evaluates approaches, and creates detailed technical specifications for implementation
 tools: [Glob, Grep, Read, WebFetch, TodoWrite]
-model: sonnet
+model: opus
 color: green
 ---
 

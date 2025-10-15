@@ -2,7 +2,7 @@
 name: idea-researcher
 description: Conducts comprehensive research on ideas using web search, technology trends, best practices, and existing solutions to inform brainstorming
 tools: [Glob, Grep, Read, WebSearch, WebFetch, TodoWrite]
-model: sonnet
+model: opus
 color: yellow
 ---
 

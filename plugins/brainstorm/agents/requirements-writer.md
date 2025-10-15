@@ -2,7 +2,7 @@
 name: requirements-writer
 description: Transforms research and architecture into actionable implementation specifications - creates detailed requirements documents that can be handed to development teams
 tools: [Read, Write, TodoWrite]
-model: sonnet
+model: opus
 color: orange
 ---
 
