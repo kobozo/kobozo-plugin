@@ -37,26 +37,32 @@ graph TB
 **Objective**: Gather comprehensive information about the idea.
 
 ### Actions
-1. **Launch idea-researcher agent** to:
-   - Clarify the problem or opportunity
-   - Research existing solutions
-   - Explore technology landscape
-   - Analyze current codebase
-   - Identify challenges and opportunities
 
-2. **Agent will research**:
-   - Best practices and industry standards
-   - Similar implementations and case studies
-   - Technology options and comparisons
-   - Current architecture patterns
-   - Integration points in codebase
+**You MUST launch the idea-researcher agent to conduct thorough research.**
 
-3. **Expected output**:
-   - Comprehensive research report
-   - Technology recommendations
-   - Best practices summary
-   - Potential challenges identified
-   - Opportunities for improvement
+Use the Task tool to launch the agent with a comprehensive prompt:
+
+```
+Use the Task tool with subagent_type: "brainstorm:idea-researcher"
+
+Prompt the agent to:
+1. Research existing solutions for [user's idea]
+2. Find best practices and case studies
+3. Analyze technology options (search for "[technology] best practices 2025")
+4. Study current codebase patterns (use Glob and Grep to find similar features)
+5. Identify integration points and constraints
+6. Document challenges and opportunities
+
+The agent should produce a comprehensive research report covering:
+- Problem analysis with target users
+- Existing solutions (commercial and open-source)
+- Technology landscape and recommendations
+- Codebase analysis (current patterns, integration points)
+- Potential challenges with mitigations
+- Opportunities for improvement
+```
+
+**Wait for the agent to complete** before proceeding to Phase 2.
 
 ### Research Report Contents
 
@@ -111,27 +117,41 @@ graph TB
 **Objective**: Design comprehensive solution architecture.
 
 ### Actions
-1. **Launch solution-architect agent** to:
-   - Analyze research findings
-   - Evaluate multiple solution approaches
-   - Design system architecture
-   - Create technical specifications
-   - Document architecture decisions (ADRs)
 
-2. **Agent will design**:
-   - High-level system architecture
-   - Component architecture
-   - Data architecture and schema
-   - Security architecture
-   - Implementation roadmap
+**You MUST launch the solution-architect agent to design the solution architecture.**
 
-3. **Present approaches to user**:
-   - Multiple approaches with trade-offs
-   - Recommended approach with rationale
-   - Risk assessment
-   - Timeline estimates
+Use the Task tool to launch the agent with a comprehensive prompt:
 
-4. **Get user approval** of chosen approach
+```
+Use the Task tool with subagent_type: "brainstorm:solution-architect"
+
+Prompt the agent to:
+1. Analyze the research findings from Phase 1
+2. Evaluate multiple solution approaches (at least 2-3 alternatives)
+3. Design high-level system architecture
+4. Create component architecture diagrams
+5. Design data architecture and database schema
+6. Plan security architecture
+7. Create implementation roadmap with phases
+8. Document architecture decisions (ADRs) with rationale
+9. Assess risks and mitigations
+10. Estimate timeline for each phase
+
+The agent should produce a comprehensive architecture document covering:
+- Executive summary with problem, solution, timeline, risk level
+- Approach evaluation (recommended + alternatives with trade-offs)
+- System architecture (high-level, component, data, security, network)
+- Technical specifications (API, component, database specs)
+- Implementation roadmap (phases with timeline)
+- Architecture Decision Records (ADRs)
+- Dependencies (external, internal, team)
+- Risk assessment with mitigations
+- Success criteria (functional and non-functional requirements)
+
+Present multiple approaches to the user with trade-offs and get approval for the chosen approach.
+```
+
+**Wait for the agent to complete and get user approval** of the chosen approach before proceeding to Phase 3.
 
 ### Architecture Document Contents
 
@@ -191,27 +211,43 @@ graph TB
 **Objective**: Create implementation-ready requirements.
 
 ### Actions
-1. **Launch requirements-writer agent** to:
-   - Synthesize research and architecture
-   - Write user stories with acceptance criteria
-   - Document functional requirements
-   - Define technical specifications
-   - Create test scenarios
 
-2. **Agent will create**:
-   - User stories for all features
-   - Detailed functional requirements
-   - Complete API specifications
-   - Database schema with migrations
-   - Component specifications
-   - Non-functional requirements
-   - Edge cases and error handling
-   - Comprehensive test scenarios
+**You MUST launch the requirements-writer agent to create detailed implementation requirements.**
 
-3. **Output will include**:
-   - Implementation checklist
-   - Definition of done
-   - Handoff notes for teams
+Use the Task tool to launch the agent with a comprehensive prompt:
+
+```
+Use the Task tool with subagent_type: "brainstorm:requirements-writer"
+
+Prompt the agent to:
+1. Synthesize research findings and approved architecture from Phases 1-2
+2. Write user stories with detailed acceptance criteria and story points
+3. Document all functional requirements (FR-001, FR-002, etc.)
+4. Create complete API specifications (endpoints, request/response schemas, validation, errors)
+5. Design database schema with SQL table definitions, indexes, constraints, migration scripts
+6. Specify all UI components (props, state management, behavior, styling)
+7. Define service layer (business logic, method signatures, error handling)
+8. Document non-functional requirements (performance, scalability, security, availability)
+9. Identify and document all edge cases with expected behavior
+10. Create comprehensive test scenarios (unit, integration, E2E)
+11. Generate implementation checklist (backend, frontend, DevOps tasks)
+12. Define "Definition of Done" with acceptance criteria, testing, documentation requirements
+
+The agent should produce implementation-ready requirements document with:
+- Overview (feature description, priority, timeline, dependencies)
+- User stories (epic and detailed stories with acceptance criteria and points)
+- Functional requirements (each with inputs, process, outputs)
+- Technical specifications (API, database schema, components, services)
+- Non-functional requirements (performance targets, security, availability)
+- Edge cases and error handling (all scenarios documented)
+- Test scenarios (comprehensive test cases)
+- Implementation checklist (all tasks across teams)
+- Definition of done (complete acceptance checklist)
+
+Save outputs to ./docs/brainstorm/[feature-name]/ directory structure.
+```
+
+**Wait for the agent to complete** before proceeding to Phase 4.
 
 ### Requirements Document Contents
 
