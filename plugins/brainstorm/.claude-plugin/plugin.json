@@ -1,6 +1,6 @@
 {
   "name": "brainstorm",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Research-driven brainstorming tool - explore ideas with web research and codebase analysis, generate comprehensive implementation specifications without changing code",
   "author": {
     "name": "Yannick De Backer",
