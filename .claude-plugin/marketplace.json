@@ -161,6 +161,17 @@
       },
       "source": "./plugins/docker-compose-manager",
       "category": "infrastructure"
+    },
+    {
+      "name": "brainstorm",
+      "description": "Research-driven brainstorming tool - explore ideas with web research and codebase analysis, generate comprehensive implementation specifications without changing code",
+      "version": "1.0.0",
+      "author": {
+        "name": "Yannick De Backer",
+        "email": "yannick@kobozo.eu"
+      },
+      "source": "./plugins/brainstorm",
+      "category": "planning"
     }
   ]
 }
