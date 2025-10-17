@@ -172,6 +172,28 @@
       },
       "source": "./plugins/brainstorm",
       "category": "planning"
+    },
+    {
+      "name": "dead-code-detector",
+      "description": "Detect and eliminate unutilized code blocks, unused functions, dead imports, and obsolete code paths for cleaner codebases using ts-prune, knip, and ESLint",
+      "version": "1.0.0",
+      "author": {
+        "name": "Yannick De Backer",
+        "email": "yannick@kobozo.eu"
+      },
+      "source": "./plugins/dead-code-detector",
+      "category": "code-quality"
+    },
+    {
+      "name": "feature-dev",
+      "description": "Comprehensive feature development workflow with specialized agents for codebase exploration, architecture design, and quality review (from official Claude Code)",
+      "version": "1.0.0",
+      "author": {
+        "name": "Yannick De Backer",
+        "email": "yannick@kobozo.eu"
+      },
+      "source": "./plugins/feature-dev",
+      "category": "development"
     }
   ]
 }

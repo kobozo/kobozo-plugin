@@ -1,0 +1,14 @@
+{
+  "$schema": "https://github.com/anthropics/claude-code/blob/main/schemas/plugin.schema.json",
+  "name": "feature-dev",
+  "version": "1.0.0",
+  "description": "Comprehensive feature development workflow with specialized agents for codebase exploration, architecture design, and quality review",
+  "author": {
+    "name": "Yannick De Backer",
+    "email": "yannick@kobozo.eu"
+  },
+  "credits": {
+    "originalAuthor": "Sid Bidasaria (Anthropic)",
+    "source": "https://github.com/anthropics/claude-code"
+  }
+}
