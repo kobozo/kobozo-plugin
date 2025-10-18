@@ -186,14 +186,58 @@
     },
     {
       "name": "feature-dev",
-      "description": "Comprehensive feature development workflow with specialized agents for codebase exploration, architecture design, and quality review (from official Claude Code)",
+      "description": "Enhanced feature development workflow with git commit/push - codebase exploration, architecture design, quality review, and automated git operations (from official Claude Code)",
+      "version": "1.1.0",
+      "author": {
+        "name": "Yannick De Backer",
+        "email": "yannick@kobozo.eu"
+      },
+      "source": "./claude/plugins/feature-dev",
+      "category": "development"
+    },
+    {
+      "name": "agent-sdk-dev",
+      "description": "Claude Agent SDK Development Plugin - tools for creating and verifying Agent SDK applications",
       "version": "1.0.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
       },
-      "source": "./plugins/feature-dev",
+      "source": "./claude/plugins/agent-sdk-dev",
       "category": "development"
+    },
+    {
+      "name": "commit-commands",
+      "description": "Git commit helper commands - commit, commit-push-pr, and clean gone branches",
+      "version": "1.0.0",
+      "author": {
+        "name": "Yannick De Backer",
+        "email": "yannick@kobozo.eu"
+      },
+      "source": "./claude/plugins/commit-commands",
+      "category": "development"
+    },
+    {
+      "name": "pr-review-toolkit",
+      "description": "Comprehensive PR review agents - comments, tests, error handling, type design, code quality, and simplification",
+      "version": "1.0.0",
+      "author": {
+        "name": "Yannick De Backer",
+        "email": "yannick@kobozo.eu"
+      },
+      "source": "./claude/plugins/pr-review-toolkit",
+      "category": "development"
+    },
+    {
+      "name": "security-guidance",
+      "description": "Security reminder hook - warns about command injection, XSS, and unsafe code patterns when editing files",
+      "version": "1.0.0",
+      "author": {
+        "name": "Yannick De Backer",
+        "email": "yannick@kobozo.eu"
+      },
+      "source": "./claude/plugins/security-guidance",
+      "category": "security"
     }
   ]
 }
