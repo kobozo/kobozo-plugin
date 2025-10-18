@@ -1,5 +1,4 @@
 {
-  "$schema": "https://github.com/anthropics/claude-code/blob/main/schemas/plugin.schema.json",
   "name": "clean-code-checker",
   "version": "1.0.0",
   "description": "Detect code duplication, identify code smells, enforce clean code principles (SOLID, DRY), and provide refactoring recommendations",

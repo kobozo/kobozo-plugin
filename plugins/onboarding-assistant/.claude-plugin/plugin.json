@@ -1,5 +1,4 @@
 {
-  "$schema": "https://github.com/anthropics/claude-code/blob/main/schemas/plugin.schema.json",
   "name": "onboarding-assistant",
   "version": "1.0.0",
   "description": "Create interactive user onboarding experiences - guided tours, product walkthroughs, tooltips, and step-by-step flows",

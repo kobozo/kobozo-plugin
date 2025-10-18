@@ -1,5 +1,4 @@
 {
-  "$schema": "https://github.com/anthropics/claude-code/blob/main/schemas/plugin.schema.json",
   "name": "dead-code-detector",
   "version": "1.0.0",
   "description": "Detect and eliminate unutilized code blocks, unused functions, dead imports, and obsolete code paths for cleaner codebases",
