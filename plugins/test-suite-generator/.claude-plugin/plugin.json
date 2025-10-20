@@ -1,9 +1,15 @@
 {
   "name": "test-suite-generator",
-  "version": "1.0.0",
-  "description": "Generate comprehensive test suites with high coverage - unit tests, integration tests, and coverage analysis",
+  "version": "2.0.0",
+  "description": "Generate comprehensive test suites with high coverage - unit tests, integration tests, E2E Playwright tests with authentication flows, and coverage analysis",
   "author": {
     "name": "Yannick De Backer",
     "email": "yannick@kobozo.eu"
+  },
+  "mcpServers": {
+    "playwright": {
+      "command": "pnpm",
+      "args": ["dlx", "@playwright/mcp@latest"]
+    }
   }
 }
