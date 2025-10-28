@@ -9,7 +9,7 @@
   "mcpServers": {
     "docker": {
       "command": "npx",
-      "args": ["-y", "@quantgeekdev/docker-mcp"]
+      "args": ["-y", "podman-mcp-server@latest"]
     }
   }
 }

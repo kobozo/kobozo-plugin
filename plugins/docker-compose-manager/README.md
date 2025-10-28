@@ -4,7 +4,7 @@
 
 **Version:** 1.0.0
 **Author:** Yannick De Backer (yannick@kobozo.eu)
-**MCP Integration:** Docker MCP (`@quantgeekdev/docker-mcp`)
+**MCP Integration:** Podman MCP Server (`podman-mcp-server`) - supports both Docker and Podman
 
 ## Table of Contents
 
@@ -29,7 +29,7 @@
 
 The Docker Compose Manager plugin provides comprehensive tools for creating, deploying, and managing production-ready Docker Compose environments. It orchestrates multi-service applications with intelligent service configuration, nginx reverse proxy setup, SSL/TLS management, and health monitoring.
 
-This plugin integrates with Docker MCP to provide direct container management capabilities, enabling seamless deployment and monitoring of containerized applications.
+This plugin integrates with Podman MCP Server to provide direct container management capabilities for both Docker and Podman runtimes, enabling seamless deployment and monitoring of containerized applications.
 
 ## Key Features
 
@@ -40,7 +40,7 @@ This plugin integrates with Docker MCP to provide direct container management ca
 - **Health Monitoring**: Track service health, resource usage, and logs
 - **Load Balancing**: Configure nginx for horizontal scaling of services
 - **Security Best Practices**: Rate limiting, security headers, IP whitelisting
-- **Docker MCP Integration**: Direct container management via Model Context Protocol
+- **Podman MCP Integration**: Direct container management for Docker/Podman via Model Context Protocol
 - **Environment Templates**: Pre-configured setups for development and production
 
 ## Installation
@@ -48,8 +48,8 @@ This plugin integrates with Docker MCP to provide direct container management ca
 ### Prerequisites
 
 - Claude Code with plugin support
-- Docker and Docker Compose installed
-- Node.js and npm (for Docker MCP)
+- Docker or Podman and Docker Compose installed
+- Node.js and npm (for Podman MCP Server)
 
 ### Install Plugin
 
@@ -58,34 +58,40 @@ This plugin integrates with Docker MCP to provide direct container management ca
    ~/.config/claude/plugins/docker-compose-manager/
    ```
 
-2. The Docker MCP server will be automatically installed when the plugin is activated:
+2. The Podman MCP server will be automatically installed when the plugin is activated:
    ```bash
-   npx -y @quantgeekdev/docker-mcp
+   npx -y podman-mcp-server@latest
    ```
 
 3. Restart Claude Code to activate the plugin.
 
 ## MCP Server Integration
 
-This plugin uses the Docker MCP server to communicate with Docker:
+This plugin uses the Podman MCP server to communicate with Docker and Podman:
 
 ```json
 {
   "mcpServers": {
     "docker": {
       "command": "npx",
-      "args": ["-y", "@quantgeekdev/docker-mcp"]
+      "args": ["-y", "podman-mcp-server@latest"]
     }
   }
 }
 ```
 
-### Available Docker MCP Tools
+### Available MCP Tools
 
-- **list-containers**: List all Docker containers
-- **get-logs**: Retrieve container logs
-- **create-container**: Create new containers
-- **deploy-compose**: Deploy Docker Compose stacks
+The Podman MCP server provides comprehensive container management capabilities:
+
+- **list_containers**: List all running and stopped containers
+- **run_container**: Create and start new containers with configuration
+- **container_logs**: Retrieve and analyze container logs
+- **remove_container**: Remove containers (with force option)
+- **container_stats**: Monitor resource usage (CPU, memory, disk)
+- **Image management**: Pull, list, and manage container images
+- **Volume management**: Create and manage persistent volumes
+- **Network management**: Configure container networking
 
 ## Commands
 
@@ -139,7 +145,7 @@ Create a complete production-ready Docker Compose environment with nginx reverse
 - Set up SSL certificates
 
 **Phase 5: Deployment**
-- Deploy stack using Docker MCP
+- Deploy stack using Podman MCP Server
 - Verify all services are running
 - Launch **service-manager** agent for monitoring
 - Test all endpoints
@@ -243,7 +249,7 @@ http://admin.example.com   → Admin panel
 **Agent**: `service-manager`
 **Color**: Cyan
 **Model**: Sonnet
-**MCP Server**: Docker
+**MCP Server**: Podman MCP Server
 
 #### Purpose
 
@@ -304,7 +310,7 @@ Unhealthy: 1
 **Agent**: `container-orchestrator`
 **Color**: Blue
 **Model**: Sonnet
-**MCP Server**: Docker
+**MCP Server**: Podman MCP Server
 
 #### Purpose
 
@@ -316,7 +322,7 @@ Orchestrates Docker Compose environments by analyzing requirements, designing mu
 - **Service Discovery**: Detect existing Docker configurations
 - **Architecture Design**: Create optimal service layouts
 - **Compose Generation**: Build production-ready docker-compose.yml
-- **Deployment**: Deploy via Docker MCP
+- **Deployment**: Deploy via Podman MCP Server
 - **Health Verification**: Ensure successful deployment
 
 #### Usage Example
@@ -431,7 +437,7 @@ Configures nginx as a reverse proxy for Docker Compose environments with routing
 # 3. Launch container-orchestrator to design architecture
 # 4. Create docker-compose.yml with frontend, backend, postgres, redis, nginx
 # 5. Launch nginx-configurator for reverse proxy
-# 6. Deploy via Docker MCP
+# 6. Deploy via Podman MCP Server
 # 7. Launch service-manager to verify health
 
 # Step 2: Access your application
