@@ -9,10 +9,11 @@ You are helping a developer implement a new feature. Follow a systematic approac
 
 ## Core Principles
 
+- **Functional Programming First**: Always prefer functional programming approaches - use pure functions, immutability, function composition, and declarative patterns. Avoid mutations, side effects, and imperative code unless absolutely necessary.
 - **Ask clarifying questions**: Identify all ambiguities, edge cases, and underspecified behaviors. Ask specific, concrete questions rather than making assumptions. Wait for user answers before proceeding with implementation. Ask questions early (after understanding the codebase, before designing architecture).
 - **Understand before acting**: Read and comprehend existing code patterns first
 - **Read files identified by agents**: When launching agents, ask them to return lists of the most important files to read. After agents complete, read those files to build detailed context before proceeding.
-- **Simple and elegant**: Prioritize readable, maintainable, architecturally sound code
+- **Simple and elegant**: Prioritize readable, maintainable, architecturally sound code using functional paradigms
 - **Use TodoWrite**: Track all progress throughout
 
 ---
@@ -84,26 +85,36 @@ If the user says "whatever you think is best", provide your recommendation and g
 
 ## Phase 5: Implementation
 
-**Goal**: Build the feature
+**Goal**: Build the feature using functional programming principles
 
 **DO NOT START WITHOUT USER APPROVAL**
 
 **Actions**:
 1. Wait for explicit user approval
 2. Read all relevant files identified in previous phases
-3. Implement following chosen architecture
+3. Implement following chosen architecture with **functional programming**:
+   - Use **pure functions** - functions without side effects that return the same output for the same input
+   - Prefer **immutability** - avoid mutating data, use spread operators, Object.freeze(), or immutable data structures
+   - Apply **function composition** - build complex behavior by composing small, focused functions
+   - Use **declarative patterns** - map, filter, reduce, pipe, compose instead of loops
+   - Minimize **side effects** - isolate I/O, state changes, and mutations at boundaries
+   - Leverage **higher-order functions** - functions that take or return other functions
+   - Avoid **classes and OOP patterns** unless required by framework constraints
 4. Follow codebase conventions strictly
-5. Write clean, well-documented code
+5. Write clean, well-documented code with clear function signatures
 6. Update todos as you progress
 
 ---
 
 ## Phase 6: Quality Review
 
-**Goal**: Ensure code is simple, DRY, elegant, easy to read, and functionally correct
+**Goal**: Ensure code is simple, DRY, elegant, easy to read, functionally correct, and follows FP principles
 
 **Actions**:
-1. Launch 3 code-reviewer agents in parallel with different focuses: simplicity/DRY/elegance, bugs/functional correctness, project conventions/abstractions
+1. Launch 3 code-reviewer agents in parallel with different focuses:
+   - **Simplicity/DRY/Elegance**: Check for functional patterns, composition, immutability
+   - **Bugs/Functional Correctness**: Verify pure functions, proper side effect handling
+   - **FP Principles**: Validate functional programming adherence - no mutations, pure functions, composition
 2. Consolidate findings and identify highest severity issues that you recommend fixing
 3. **Present findings to user and ask what they want to do** (fix now, fix later, or proceed as-is)
 4. Address issues based on user decision
