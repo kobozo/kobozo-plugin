@@ -110,141 +110,16 @@ If the user says "whatever you think is best", provide your recommendation and g
 
 ---
 
-## Phase 7: Test Validation & Approval
-
-**Goal**: Verify all tests pass and get user approval before committing
-
-**Actions**:
-
-### 7.1 Run Full Test Suite
-```bash
-npm test
-# or appropriate test command for the project
-```
-
-### 7.2 Present Test Results
-1. Show test summary:
-   - Total tests run
-   - Passed / Failed / Skipped
-   - Coverage percentage
-   - Duration
-2. If tests fail:
-   - Show failure details
-   - Analyze root causes
-   - **Fix issues immediately**
-   - Re-run tests
-   - **Repeat until all tests pass**
-
-### 7.3 Request User Approval
-Once all tests pass, present:
-```
-✅ All tests passing (X/X tests, Y% coverage)
-
-Modified files:
-- path/to/file1.ts (description)
-- path/to/file2.tsx (description)
-[...list all modified files...]
-
-Ready to commit and push.
-
-**Do you approve these changes?**
-```
-
-**CRITICAL**: Do NOT proceed to git operations without explicit user approval
-
----
-
-## Phase 8: Git Commit & Push
-
-**Goal**: Commit changes and push to repository
-
-**ONLY EXECUTE IF USER APPROVED IN PHASE 7**
-
-**Actions**:
-
-### 8.1 Review Git Status
-```bash
-git status
-```
-
-### 8.2 Stage Changes
-```bash
-git add [modified files]
-```
-
-### 8.3 Create Commit
-Follow the project's commit message conventions (check git log for style):
-
-```bash
-git commit -m "$(cat <<'EOF'
-[Type]: [Brief description]
-
-[Detailed description of what was implemented]
-
-- Key changes made
-- Components affected
-- Related issue/ticket reference (if applicable)
-
-🤖 Generated with [Claude Code](https://claude.com/claude-code)
-
-Co-Authored-By: Claude <noreply@anthropic.com>
-EOF
-)"
-```
-
-**Commit Message Guidelines**:
-- Type: feat, fix, refactor, docs, test, chore, perf, style
-- Brief: One-line summary (<50 chars)
-- Detailed: What, why, and how (not just what changed)
-- Reference tickets/issues if applicable
-
-### 8.4 Push to Remote
-```bash
-git push
-```
-
-If push requires upstream:
-```bash
-git push -u origin [branch-name]
-```
-
-### 8.5 Confirm Success
-```bash
-git log -1
-```
-
-Present confirmation to user:
-```
-✅ Changes committed and pushed successfully
-
-Commit: [commit hash]
-Branch: [branch name]
-Remote: [remote URL]
-
-Commit message:
-[show commit message]
-```
-
----
-
-## Phase 9: Summary
+## Phase 7: Summary
 
 **Goal**: Document what was accomplished
 
 **Actions**:
 1. Mark all todos complete
-2. Comprehensive summary:
-   - **What was built**: Feature description and scope
-   - **Key decisions made**: Architecture choices and rationale
-   - **Files modified**: List with brief descriptions and commit hash
-   - **Git information**:
-     - Commit hash
-     - Branch name
-     - Push status
-   - **Suggested next steps**:
-     - Create pull request (if on feature branch)
-     - Deploy to staging/production
-     - Update project board/tickets
-     - Notify team members
+2. Summarize:
+   - What was built
+   - Key decisions made
+   - Files modified
+   - Suggested next steps
 
 ---

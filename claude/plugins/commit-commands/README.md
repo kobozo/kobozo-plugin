@@ -1,421 +1,225 @@
-# Commit Commands
+# Commit Commands Plugin
 
-**Version:** 1.0.0
-**Author:** Anthropic
-**Type:** Official Claude Code Plugin
-
-> This is an **official Claude Code plugin** from Anthropic, synced from the official Claude Code plugins repository.
+Streamline your git workflow with simple commands for committing, pushing, and creating pull requests.
 
 ## Overview
 
-The commit-commands plugin provides convenient slash commands for common git workflow operations, streamlining the process of committing changes, pushing code, and cleaning up branches.
-
-## Table of Contents
-
-- [Features](#features)
-- [Installation](#installation)
-- [Commands](#commands)
-  - [/commit](#commit)
-  - [/commit-push-pr](#commit-push-pr)
-  - [/clean_gone](#clean_gone)
-- [Usage Examples](#usage-examples)
-- [Best Practices](#best-practices)
-- [Tips](#tips)
-
-## Features
-
-- **Simple Git Commits**: Create commits with a single command
-- **Integrated Workflow**: Commit, push, and create PR in one step
-- **Branch Cleanup**: Remove stale local branches that have been deleted on remote
-- **Context-Aware**: Uses current git status and recent commits for better commit messages
-- **Minimal Tool Usage**: Focused commands that do exactly what they say
-
-## Installation
-
-This plugin is part of the official Claude plugins. If you have it synced in your marketplace:
-
-```bash
-/plugin install commit-commands@kobozo-plugins
-```
-
-Or from the official source if available in your Claude Code installation.
+The Commit Commands Plugin automates common git operations, reducing context switching and manual command execution. Instead of running multiple git commands, use a single slash command to handle your entire workflow.
 
 ## Commands
 
-### /commit
+### `/commit`
 
-Create a git commit based on current changes.
+Creates a git commit with an automatically generated commit message based on staged and unstaged changes.
+
+**What it does:**
+1. Analyzes current git status
+2. Reviews both staged and unstaged changes
+3. Examines recent commit messages to match your repository's style
+4. Drafts an appropriate commit message
+5. Stages relevant files
+6. Creates the commit
 
 **Usage:**
 ```bash
 /commit
 ```
 
-**What it does:**
-1. Analyzes current git status
-2. Reviews staged and unstaged changes (git diff)
-3. Checks current branch
-4. Reviews recent commit messages (last 10)
-5. Stages relevant changes
-6. Creates a commit with an appropriate message
-
-**Context Provided:**
-- Current git status
-- Git diff (staged and unstaged)
-- Current branch name
-- Recent commits (last 10)
-
-**Example:**
+**Example workflow:**
 ```bash
-# After making changes to your code
+# Make some changes to your code
+# Then simply run:
 /commit
 
 # Claude will:
 # - Review your changes
-# - Stage appropriate files
-# - Create a commit with a meaningful message
+# - Stage the files
+# - Create a commit with an appropriate message
+# - Show you the commit status
 ```
 
-**Output:**
-```bash
-git add src/components/Button.tsx
-git commit -m "Add hover state to Button component
+**Features:**
+- Automatically drafts commit messages that match your repo's style
+- Follows conventional commit practices
+- Avoids committing files with secrets (.env, credentials.json)
+- Includes Claude Code attribution in commit message
 
-- Add :hover styles with transition
-- Update Button props to accept hoverColor
-- Add storybook example for hover state"
-```
+### `/commit-push-pr`
 
----
+Complete workflow command that commits, pushes, and creates a pull request in one step.
 
-### /commit-push-pr
-
-Commit changes, push to remote, and open a pull request in one command.
+**What it does:**
+1. Creates a new branch (if currently on main)
+2. Stages and commits changes with an appropriate message
+3. Pushes the branch to origin
+4. Creates a pull request using `gh pr create`
+5. Provides the PR URL
 
 **Usage:**
 ```bash
 /commit-push-pr
 ```
 
-**What it does:**
-1. Performs all steps from `/commit`
-2. Pushes changes to remote branch
-3. Opens a pull request via `gh pr create`
-
-**Requirements:**
-- GitHub CLI (`gh`) installed and authenticated
-- Current branch pushed to remote (or will be pushed)
-- Repository has a remote configured
-
-**Example:**
+**Example workflow:**
 ```bash
-# Complete workflow in one command
+# Make your changes
+# Then run:
 /commit-push-pr
 
 # Claude will:
-# 1. Stage and commit changes
-# 2. Push to remote
-# 3. Create PR with title and description
+# - Create a feature branch (if needed)
+# - Commit your changes
+# - Push to remote
+# - Open a PR with summary and test plan
+# - Give you the PR URL to review
 ```
 
-**Output:**
-```bash
-# Stage files
-git add src/components/Button.tsx
-git add src/components/Button.test.tsx
+**Features:**
+- Analyzes all commits in the branch (not just the latest)
+- Creates comprehensive PR descriptions with:
+  - Summary of changes (1-3 bullet points)
+  - Test plan checklist
+  - Claude Code attribution
+- Handles branch creation automatically
+- Uses GitHub CLI (`gh`) for PR creation
 
-# Create commit
-git commit -m "Add hover state to Button component"
+**Requirements:**
+- GitHub CLI (`gh`) must be installed and authenticated
+- Repository must have a remote named `origin`
 
-# Push to remote
-git push origin feature/button-hover
+### `/clean_gone`
 
-# Create PR
-gh pr create --title "Add hover state to Button component" \
-  --body "Implements hover state with smooth transitions..."
+Cleans up local branches that have been deleted from the remote repository.
 
-# Output: https://github.com/user/repo/pull/123
-```
-
----
-
-### /clean_gone
-
-Clean up local branches that have been deleted on the remote.
+**What it does:**
+1. Lists all local branches to identify [gone] status
+2. Identifies and removes worktrees associated with [gone] branches
+3. Deletes all branches marked as [gone]
+4. Provides feedback on removed branches
 
 **Usage:**
 ```bash
 /clean_gone
 ```
 
-**What it does:**
-1. Identifies local branches marked as `[gone]` (deleted on remote)
-2. Removes associated worktrees if any
-3. Deletes the local branches
-4. Provides a summary of cleaned branches
+**Example workflow:**
+```bash
+# After PRs are merged and remote branches are deleted
+/clean_gone
+
+# Claude will:
+# - Find all branches marked as [gone]
+# - Remove any associated worktrees
+# - Delete the stale local branches
+# - Report what was cleaned up
+```
+
+**Features:**
+- Handles both regular branches and worktree branches
+- Safely removes worktrees before deleting branches
+- Shows clear feedback about what was removed
+- Reports if no cleanup was needed
 
 **When to use:**
-- After merging pull requests that delete branches
+- After merging and deleting remote branches
+- When your local branch list is cluttered with stale branches
 - During regular repository maintenance
-- When `git branch -vv` shows many `[gone]` branches
 
-**Example:**
-```bash
-/clean_gone
+## Installation
 
-# Claude will identify and remove branches like:
-# - feature/old-feature [gone]
-# - bugfix/issue-123 [gone]
-# - experiment/try-this [gone]
-```
-
-**Output:**
-```bash
-# Removing worktrees for gone branches
-git worktree remove /path/to/worktree/feature-old-feature
-
-# Deleting gone branches
-git branch -D feature/old-feature
-git branch -D bugfix/issue-123
-git branch -D experiment/try-this
-
-# Summary
-Cleaned up 3 local branches that were deleted on remote:
-- feature/old-feature
-- bugfix/issue-123
-- experiment/try-this
-```
-
----
-
-## Usage Examples
-
-### Example 1: Quick Commit
-
-```bash
-# Make some changes
-vim src/components/Header.tsx
-
-# Commit them
-/commit
-
-# Result: Commit created with appropriate message
-```
-
-### Example 2: Feature Branch Workflow
-
-```bash
-# Create feature branch
-git checkout -b feature/new-dashboard
-
-# Make changes...
-# ...
-
-# Commit, push, and create PR
-/commit-push-pr
-
-# Result: PR created at https://github.com/user/repo/pull/456
-```
-
-### Example 3: Weekly Cleanup
-
-```bash
-# Every Friday, clean up merged branches
-/clean_gone
-
-# Result:
-# Cleaned up 5 local branches:
-# - feature/add-auth
-# - feature/update-deps
-# - bugfix/fix-login
-# - feature/new-api
-# - hotfix/security-patch
-```
-
-### Example 4: Rapid Development Cycle
-
-```bash
-# Make changes
-vim src/app.ts
-
-# Quick commit
-/commit
-
-# Continue work...
-vim src/utils.ts
-
-# Another commit
-/commit
-
-# Ready for PR
-git checkout -b feature/improvements
-git rebase -i main  # Clean up commits
-/commit-push-pr
-```
+This plugin is included in the Claude Code repository. The commands are automatically available when using Claude Code.
 
 ## Best Practices
 
-### Commit Messages
+### Using `/commit`
+- Review the staged changes before committing
+- Let Claude analyze your changes and match your repo's commit style
+- Trust the automated message, but verify it's accurate
+- Use for routine commits during development
 
-The `/commit` command analyzes your recent commits to match your project's style:
+### Using `/commit-push-pr`
+- Use when you're ready to create a PR
+- Ensure all your changes are complete and tested
+- Claude will analyze the full branch history for the PR description
+- Review the PR description and edit if needed
+- Use when you want to minimize context switching
 
-- **Conventional Commits**: If your repo uses `feat:`, `fix:`, etc., Claude will follow that pattern
-- **Issue References**: If commits reference issues like `#123`, Claude will include them
-- **Scope**: If commits include scope like `feat(api):`, Claude will determine appropriate scope
-- **Body Format**: Claude matches multi-line commit body style from recent commits
+### Using `/clean_gone`
+- Run periodically to keep your branch list clean
+- Especially useful after merging multiple PRs
+- Safe to run - only removes branches already deleted remotely
+- Helps maintain a tidy local repository
 
-### When to Use Each Command
+## Workflow Integration
 
-**Use `/commit` when:**
-- You want to commit without pushing
-- You're making multiple commits before pushing
-- You want to review the commit before pushing
-- You're working on a local branch experiment
-
-**Use `/commit-push-pr` when:**
-- Your changes are ready for review
-- You want to create a PR immediately
-- You're following a trunk-based development workflow
-- Your team reviews all changes via PR
-
-**Use `/clean_gone` when:**
-- After merging several PRs
-- Your `git branch` output is cluttered
-- Weekly/monthly repository maintenance
-- Before starting new work to clean workspace
-
-### Git Workflow Integration
-
-These commands integrate well with common workflows:
-
-**GitHub Flow:**
+### Quick commit workflow:
 ```bash
-git checkout -b feature/new-feature
-# ... make changes ...
+# Write code
+/commit
+# Continue development
+```
+
+### Feature branch workflow:
+```bash
+# Develop feature across multiple commits
+/commit  # First commit
+# More changes
+/commit  # Second commit
+# Ready to create PR
 /commit-push-pr
-# ... address review comments ...
-/commit
-git push
 ```
 
-**Trunk-Based Development:**
+### Maintenance workflow:
 ```bash
-git checkout -b short-lived-branch
-# ... make small changes ...
-/commit-push-pr
-# ... merge quickly ...
+# After several PRs are merged
 /clean_gone
+# Clean workspace ready for next feature
 ```
 
-**Gitflow:**
-```bash
-git checkout -b feature/big-feature
-# ... multiple commits ...
-/commit
-/commit
-/commit
-# ... when ready ...
-git checkout develop
-git merge feature/big-feature
-git push
-/clean_gone
-```
+## Requirements
+
+- Git must be installed and configured
+- For `/commit-push-pr`: GitHub CLI (`gh`) must be installed and authenticated
+- Repository must be a git repository with a remote
+
+## Troubleshooting
+
+### `/commit` creates empty commit
+
+**Issue**: No changes to commit
+
+**Solution**:
+- Ensure you have unstaged or staged changes
+- Run `git status` to verify changes exist
+
+### `/commit-push-pr` fails to create PR
+
+**Issue**: `gh pr create` command fails
+
+**Solution**:
+- Install GitHub CLI: `brew install gh` (macOS) or see [GitHub CLI installation](https://cli.github.com/)
+- Authenticate: `gh auth login`
+- Ensure repository has a GitHub remote
+
+### `/clean_gone` doesn't find branches
+
+**Issue**: No branches marked as [gone]
+
+**Solution**:
+- Run `git fetch --prune` to update remote tracking
+- Branches must be deleted from the remote to show as [gone]
 
 ## Tips
 
-### Commit Command Tips
+- **Combine with other tools**: Use `/commit` during development, then `/commit-push-pr` when ready
+- **Let Claude draft messages**: The commit message analysis learns from your repo's style
+- **Regular cleanup**: Run `/clean_gone` weekly to maintain a clean branch list
+- **Review before pushing**: Always review the commit message and changes before pushing
 
-1. **Stage Selectively Before /commit**
-   ```bash
-   git add -p  # Interactive staging
-   /commit     # Commits only staged files
-   ```
+## Author
 
-2. **Review Before Commit**
-   ```bash
-   git diff --staged  # Review what will be committed
-   /commit
-   ```
+Anthropic (support@anthropic.com)
 
-3. **Amend Last Commit**
-   ```bash
-   # Make additional changes
-   git add .
-   git commit --amend --no-edit
-   ```
+## Version
 
-### PR Command Tips
-
-1. **Draft PRs**
-   ```bash
-   # For work in progress
-   /commit-push-pr
-   # Then manually convert to draft in GitHub
-   ```
-
-2. **PR Templates**
-   - The command uses `gh pr create` which respects `.github/PULL_REQUEST_TEMPLATE.md`
-   - Claude will populate the template appropriately
-
-3. **CI/CD Integration**
-   - PR creation triggers CI/CD automatically
-   - Review checks before merging
-
-### Clean Gone Tips
-
-1. **Check Before Cleaning**
-   ```bash
-   git branch -vv | grep '\[gone\]'  # Preview what will be cleaned
-   /clean_gone
-   ```
-
-2. **Protect Important Branches**
-   - The command only removes branches marked `[gone]`
-   - Your current branch is never removed
-   - Branches without remotes are not affected
-
-3. **Worktree Support**
-   - The command detects and removes worktrees for gone branches
-   - Safe to use even with multiple worktrees
-
-### General Tips
-
-1. **Combine with Git Aliases**
-   ```bash
-   # .gitconfig
-   [alias]
-       st = status
-       co = checkout
-
-   # Then use:
-   git co -b feature/new
-   /commit
-   ```
-
-2. **Use with Pre-commit Hooks**
-   - These commands work with pre-commit hooks
-   - Claude respects hook failures
-   - Linters and formatters run normally
-
-3. **Error Handling**
-   - If a command fails, Claude provides the error
-   - You can fix the issue and retry
-   - Commands are idempotent when safe
-
-## Support
-
-This is an official Anthropic plugin synced from the official Claude Code plugins repository.
-
-For issues or questions:
-- Check official Claude Code documentation
-- Report issues to Anthropic support channels
-
-## Related Plugins
-
-- **feature-dev**: Comprehensive feature development workflow
-- **pr-review-toolkit**: Multi-agent PR review system
-
----
-
-**Plugin Type:** Official Anthropic Plugin
-**Synced From:** Official Claude Code Plugins Repository
+1.0.0
