@@ -238,6 +238,17 @@
       },
       "source": "./claude/plugins/security-guidance",
       "category": "security"
+    },
+    {
+      "name": "feature-flags",
+      "description": "Intelligent feature flag detection and implementation - analyzes existing patterns, integrates with feature-dev, supports LaunchDarkly, Unleash, environment-based, config files, database, and pub/sub patterns",
+      "version": "1.0.0",
+      "author": {
+        "name": "Yannick De Backer",
+        "email": "yannick@kobozo.eu"
+      },
+      "source": "./plugins/feature-flags",
+      "category": "development"
     }
   ]
 }
