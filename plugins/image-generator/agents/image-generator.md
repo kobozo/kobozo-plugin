@@ -7,7 +7,7 @@ color: yellow
 mcpServers:
   nano-banana:
     command: npx
-    args: ["-y", "falahgs/imagen-3.0-generate-google-mcp-server"]
+    args: ["-y", "gemini-imagen-mcp-server"]
     env:
       GEMINI_API_KEY: ${GEMINI_API_KEY}
   dalle:
