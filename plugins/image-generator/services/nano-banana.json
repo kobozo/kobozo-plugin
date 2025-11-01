@@ -1,0 +1,106 @@
+{
+  "name": "nano-banana",
+  "displayName": "Nano Banana (Google Gemini 2.5 Flash Image)",
+  "mcpServer": "nano-banana",
+  "mcpTool": "generate_image",
+  "defaultService": true,
+  "description": "Google's Gemini 2.5 Flash Image model (codenamed 'Nano Banana') - high-quality photorealistic and artistic image generation with 10 aspect ratios",
+  "capabilities": {
+    "photorealistic": true,
+    "artistic": true,
+    "characterConsistency": true,
+    "styleTransfer": true,
+    "detailedScenes": true
+  },
+  "pricing": {
+    "model": "gemini-2-5-flash-image-preview",
+    "cost": "$0.039 per image",
+    "details": "$30 per 1M tokens, ~1290 tokens per image"
+  },
+  "authentication": {
+    "envVar": "GEMINI_API_KEY",
+    "instructions": "Get your API key from https://aistudio.google.com/apikey"
+  },
+  "promptRequirements": {
+    "maxLength": 1024,
+    "style": "highly descriptive and visual",
+    "tone": "detailed, specific, cinematic",
+    "guidelines": [
+      "Be extremely descriptive and visual - paint a picture with words",
+      "Include specific lighting details (golden hour, rim lighting, soft diffused light)",
+      "Describe atmosphere and mood (serene, energetic, mysterious, warm)",
+      "Specify composition and perspective (close-up, wide angle, bird's eye view)",
+      "Include material and texture details (glossy, matte, metallic, organic)",
+      "Mention artistic style if applicable (photorealistic, impressionist, minimalist)",
+      "Add environmental context (indoor/outdoor, time of day, weather)",
+      "Use cinematic language (depth of field, bokeh, dynamic range)"
+    ],
+    "bestFor": [
+      "Photorealistic portraits and scenes",
+      "Artistic interpretations with specific styles",
+      "Detailed architectural visualizations",
+      "Product photography with specific lighting",
+      "Character designs with consistency needs",
+      "Landscapes and nature scenes"
+    ],
+    "avoidances": [
+      "Vague or generic descriptions",
+      "Single-word prompts without context",
+      "Contradictory instructions",
+      "Overly abstract concepts without visual anchors"
+    ],
+    "examples": [
+      {
+        "userIntent": "button icon",
+        "basicPrompt": "A button icon",
+        "engineeredPrompt": "A modern, minimalist button icon in flat design style. Clean geometric shape with rounded corners, subtle gradient from #4A90E2 to #357ABD, featuring a crisp white play symbol in the center. Soft drop shadow for depth, 128x128 pixels, perfect for web interfaces. Professional, polished appearance with pixel-perfect edges."
+      },
+      {
+        "userIntent": "hero image for SaaS product",
+        "basicPrompt": "SaaS hero image",
+        "engineeredPrompt": "A professional hero image for a modern SaaS platform. Clean, minimal composition with a gradient background transitioning from deep navy (#1A1F36) to vibrant purple (#6B46C1). Foreground features a floating 3D isometric dashboard interface with glowing data visualizations, soft shadows, and glass morphism effects. Subtle particle effects suggest connectivity and data flow. Photorealistic rendering with depth of field, cinematic lighting from upper left creating rim highlights. 16:9 aspect ratio, suitable for website headers."
+      },
+      {
+        "userIntent": "realistic coffee shop scene",
+        "basicPrompt": "Coffee shop",
+        "engineeredPrompt": "A warm, inviting coffee shop interior during golden hour. Sunlight streams through large windows creating dramatic shadows across rustic wooden tables. In the foreground, a beautifully crafted latte with intricate foam art sits on a ceramic saucer, steam gently rising. Background shows blurred bokeh of hanging Edison bulbs, exposed brick walls, and a barista working the espresso machine. Warm color palette with amber and brown tones. Shallow depth of field focusing on the latte. Photorealistic, shot with 50mm lens at f/1.8, professional food photography style."
+      }
+    ]
+  },
+  "parameters": {
+    "aspectRatio": {
+      "type": "enum",
+      "description": "Image aspect ratio",
+      "values": ["1:1", "16:9", "9:16", "4:3", "3:4", "16:10", "10:16", "3:2", "2:3", "21:9"],
+      "default": "1:1",
+      "recommendations": {
+        "1:1": "Social media posts, profile pictures, icons",
+        "16:9": "Website heroes, presentations, YouTube thumbnails",
+        "9:16": "Mobile stories, TikTok, Instagram Reels",
+        "4:3": "Traditional photography, print materials",
+        "3:2": "Photography, posters",
+        "21:9": "Ultrawide cinematic compositions"
+      }
+    }
+  },
+  "errorHandling": {
+    "missingApiKey": "GEMINI_API_KEY environment variable is not set. Get your API key from https://aistudio.google.com/apikey and set it in your environment.",
+    "rateLimitExceeded": "Rate limit exceeded for Gemini API. Please wait a moment and try again.",
+    "contentPolicyViolation": "The prompt may have triggered content policy restrictions. Try rephrasing with more neutral language.",
+    "invalidAspectRatio": "The specified aspect ratio is not supported. Choose from: 1:1, 16:9, 9:16, 4:3, 3:4, 16:10, 10:16, 3:2, 2:3, 21:9"
+  },
+  "optimizationTips": {
+    "promptEngineering": [
+      "Start with the main subject, then add context and details",
+      "Use specific numbers and measurements where relevant",
+      "Reference real-world photography techniques (f-stops, lens types)",
+      "Include art movement references for style consistency",
+      "Layer descriptions: composition → lighting → mood → details"
+    ],
+    "styleTransfer": [
+      "When analyzing reference images, extract: color palette, lighting style, composition patterns, texture quality",
+      "Translate visual elements to descriptive language",
+      "Maintain consistency in descriptive vocabulary"
+    ]
+  }
+}

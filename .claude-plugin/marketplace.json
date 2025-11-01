@@ -249,6 +249,17 @@
       },
       "source": "./plugins/feature-flags",
       "category": "development"
+    },
+    {
+      "name": "image-generator",
+      "description": "AI image generation with intelligent prompt engineering - supports Nano Banana (Gemini) and DALL-E with style guide integration, reference style transfer, and variation generation",
+      "version": "1.0.0",
+      "author": {
+        "name": "Yannick De Backer",
+        "email": "yannick@kobozo.eu"
+      },
+      "source": "./plugins/image-generator",
+      "category": "creative"
     }
   ]
 }

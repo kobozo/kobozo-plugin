@@ -39,18 +39,19 @@ The UI Checker plugin is a comprehensive solution for maintaining design system 
 
 ### What It Does
 
-1. **Validates UI Implementations** - Automatically checks your pages against style guide documentation
-2. **Creates Style Guides** - Interviews you about your design decisions and generates comprehensive documentation
-3. **Generates Components** - Creates production-ready React components that follow your design system
-4. **Manages Design Systems** - Sets up semantic design tokens, Tailwind configuration, and CSS variables
+1. **Validates UI Implementations** - Automatically checks your pages against style guide documentation using Playwright for screenshot capture and AI-powered analysis
+2. **Creates Style Guides** - Interviews you about your design decisions and generates comprehensive documentation (four-document suite)
+3. **Generates Components** - Creates production-ready React + TypeScript components that follow your design system with Tailwind CSS and Shadcn UI
+4. **Manages Design Systems** - Sets up semantic design tokens, Tailwind configuration, CSS variables, and supports dark mode out of the box
 
 ### Why Use It?
 
-- **Maintain Consistency**: Ensure every page follows your design standards
-- **Catch Issues Early**: Identify design violations before they reach production
-- **Speed Up Development**: Generate components instead of writing them from scratch
-- **Document Design Decisions**: Keep a single source of truth for your design system
-- **Enforce Standards**: Automated validation with scoring (1-10 scale)
+- **Maintain Consistency**: Ensure every page follows your design standards with automated validation
+- **Catch Issues Early**: Identify design violations before they reach production with 1-10 scoring across 6 categories
+- **Speed Up Development**: Generate components instead of writing them from scratch - save hours of boilerplate coding
+- **Document Design Decisions**: Keep a single source of truth for your design system with version-controlled style guides
+- **Enforce Standards**: Automated validation with clear scoring (1-10 scale) and actionable fix recommendations
+- **Production Ready**: All generated components are TypeScript, accessible, responsive, and follow best practices
 
 ---
 
@@ -87,21 +88,27 @@ The UI Checker plugin is a comprehensive solution for maintaining design system 
 
 ### Prerequisites
 
-- Claude Code CLI installed and configured
-- Node.js 18+ and pnpm/npm/yarn
-- A web application project (React recommended)
+- **Claude Code** CLI installed and configured
+- **Node.js** 18+ and pnpm/npm/yarn
+- **A web application project** (React/Next.js recommended for component generation)
+- **Running application** (for UI validation - needs a development server)
 
 ### Install the Plugin
 
+This plugin is part of the kobozo-plugins collection:
+
 ```bash
-# Navigate to your Claude plugins directory
+# Clone the kobozo-plugins repository
+git clone https://github.com/yannickdb/kobozo-plugins.git
+
+# Navigate to Claude Code plugins directory
 cd ~/.config/claude/plugins
 
-# Clone or download the ui-checker plugin
-git clone <repository-url> ui-checker
+# Create a symlink or copy the ui-checker plugin
+ln -s /path/to/kobozo-plugins/plugins/ui-checker ./ui-checker
 
-# Or manually copy the plugin directory
-cp -r /path/to/ui-checker ~/.config/claude/plugins/
+# Or copy the directory
+cp -r /path/to/kobozo-plugins/plugins/ui-checker ./ui-checker
 ```
 
 ### Verify Installation
@@ -110,7 +117,11 @@ cp -r /path/to/ui-checker ~/.config/claude/plugins/
 # List installed plugins
 claude plugins list
 
-# You should see ui-checker v2.0.0
+# You should see:
+# ui-checker v2.0.0 - Automated UI validation and creation
+
+# Test a command
+/create-style-guide
 ```
 
 ---
@@ -869,6 +880,63 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
 ---
 
+## Real-World Use Cases
+
+### Use Case 1: Startup Building MVP
+
+**Scenario**: You're building an MVP and want to establish design consistency early.
+
+**Solution**:
+1. Run `/create-style-guide` to document your brand colors, fonts, and spacing
+2. Use `/setup-design-system` to generate CSS variables and Tailwind config
+3. Generate UI components with `/create-component` for buttons, cards, forms
+4. Validate each page with `/ui-check` as you build features
+5. Ensure 8+ scores before shipping to production
+
+**Benefits**: Consistent UI from day one, faster development with reusable components, automated validation prevents design drift.
+
+### Use Case 2: Agency Managing Multiple Clients
+
+**Scenario**: Design agency maintaining several client projects with different brand guidelines.
+
+**Solution**:
+1. Create separate style guides per client: `/create-style-guide`
+2. Use `/setup-design-system` to generate client-specific design tokens
+3. Generate branded components with `/create-component`
+4. Run `/ui-check` before client reviews to catch violations
+5. Update style guides as client feedback comes in
+
+**Benefits**: Maintain multiple brand identities, catch issues before client reviews, speed up handoffs with documentation.
+
+### Use Case 3: Enterprise Design System Team
+
+**Scenario**: Large company standardizing design across 10+ product teams.
+
+**Solution**:
+1. Document comprehensive design system: `/create-style-guide`
+2. Set up shared design tokens: `/setup-design-system`
+3. Create component library: Multiple `/create-component` calls
+4. Product teams use `/ui-check` in CI/CD to validate compliance
+5. Design system team uses `/create-style-guide` to update standards
+
+**Benefits**: Enforce consistency across teams, automated compliance checking, reduce design review time, keep documentation up to date.
+
+### Use Case 4: Redesign/Rebrand Project
+
+**Scenario**: Existing application needs a complete visual refresh.
+
+**Solution**:
+1. Document new brand guidelines: `/create-style-guide`
+2. Update design system: `/setup-design-system`
+3. Run `/ui-check` on existing pages to identify violations (will score low)
+4. Generate new components: `/create-component` with new tokens
+5. Validate updates: Re-run `/ui-check` to verify improvements
+6. Track progress by watching scores increase from 4-5 to 9-10
+
+**Benefits**: Systematic approach to redesign, clear progress metrics, identify all pages needing updates.
+
+---
+
 ## Workflow Examples
 
 ### Example 1: New Project Setup
@@ -1262,6 +1330,51 @@ npm run build
 npm publish
 ```
 
+### Integration with Design Tools
+
+**Figma Integration**:
+- Export design tokens from Figma using plugins like "Design Tokens"
+- Import tokens into your style guide: `/create-style-guide`
+- Keep Figma and code in sync
+
+**Storybook Integration**:
+```bash
+# After generating components
+# Create stories for Storybook
+npx storybook init
+
+# Component stories are auto-generated with examples
+```
+
+**Chromatic Visual Regression**:
+```yaml
+# .github/workflows/visual-test.yml
+- name: Run UI Check
+  run: |
+    claude run /ui-check dashboard
+
+- name: Publish to Chromatic
+  uses: chromaui/action@v1
+```
+
+### Performance Optimization
+
+**Lazy Loading Components**:
+```tsx
+// Dynamic import for large components
+const HeavyComponent = lazy(() => import('./components/ui/heavy-component'))
+```
+
+**Tree Shaking**:
+- All generated components are tree-shakeable
+- Import only what you need: `import { Button } from '@/components/ui'`
+
+**Bundle Analysis**:
+```bash
+# Check component bundle sizes
+npm run build -- --analyze
+```
+
 ---
 
 ## Summary
@@ -1275,19 +1388,41 @@ The UI Checker plugin provides a comprehensive solution for:
 
 ### Quick Start
 
-1. Install the plugin
-2. Run `/create-style-guide` to document your design
-3. Run `/setup-design-system` to generate design tokens
-4. Run `/create-component` to build components
-5. Run `/ui-check` to validate pages
+1. **Install the plugin** from kobozo-plugins repository
+2. **Create your style guide**: `/create-style-guide` - Interactive interview to document your design
+3. **Set up design system**: `/setup-design-system` - Generate CSS variables and Tailwind config
+4. **Generate components**: `/create-component button --with-variants` - Create production-ready components
+5. **Validate your UI**: `/ui-check dashboard` - Check compliance with style guide
+
+### Related Plugins
+
+This plugin works well with other kobozo plugins:
+- **image-generator**: Generate AI images following your style guide
+- **feature-dev**: Enhanced feature development workflow
+- **brainstorm**: Research and requirements gathering
+
+### Plugin Architecture
+
+The plugin uses a **multi-agent architecture** with specialized agents:
+- **6 specialized agents** each handling specific tasks
+- **Playwright MCP integration** for browser automation
+- **Pure functional approach** where possible
+- **TodoWrite tracking** for progress transparency
 
 ### Support
 
 For issues, questions, or contributions:
-- Email: yannick@kobozo.eu
-- Review the troubleshooting section above
-- Check agent documentation for specific behaviors
+- **Email**: yannick@kobozo.eu
+- **Repository**: https://github.com/yannickdb/kobozo-plugins
+- **Review**: Troubleshooting section above
+- **Check**: Agent documentation for specific behaviors
+
+### Version
+
+**Current Version**: 2.0.0
+**Last Updated**: October 2024
+**Compatibility**: Claude Code latest
 
 ---
 
-**Happy building!** The UI Checker plugin is here to help you maintain design consistency and accelerate UI development.
+**Happy building!** 🎨 The UI Checker plugin is here to help you maintain design consistency and accelerate UI development with automated validation, intelligent component generation, and comprehensive design system management.

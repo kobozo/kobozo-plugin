@@ -1,0 +1,31 @@
+{
+  "name": "image-generator",
+  "version": "1.0.0",
+  "description": "AI image generation with intelligent prompt engineering - supports Nano Banana (Gemini) and DALL-E with style guide integration",
+  "author": {
+    "name": "Yannick De Backer",
+    "email": "yannick@kobozo.eu"
+  },
+  "mcpServers": {
+    "nano-banana": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "falahgs/imagen-3.0-generate-google-mcp-server"
+      ],
+      "env": {
+        "GEMINI_API_KEY": "${GEMINI_API_KEY}"
+      }
+    },
+    "dalle": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-openai"
+      ],
+      "env": {
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}"
+      }
+    }
+  }
+}

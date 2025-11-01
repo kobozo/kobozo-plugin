@@ -1,0 +1,129 @@
+{
+  "name": "dalle",
+  "displayName": "DALL-E 3 (OpenAI)",
+  "mcpServer": "dalle",
+  "mcpTool": "create_image",
+  "defaultService": false,
+  "description": "OpenAI's DALL-E 3 - advanced AI image generation with natural language understanding and creative interpretation",
+  "capabilities": {
+    "photorealistic": true,
+    "artistic": true,
+    "textRendering": true,
+    "creativeInterpretation": true,
+    "conceptualArt": true
+  },
+  "pricing": {
+    "model": "dall-e-3",
+    "standard": "$0.040 per image (1024x1024), $0.080 per image (1024x1792 or 1792x1024)",
+    "hd": "$0.080 per image (1024x1024), $0.120 per image (1024x1792 or 1792x1024)"
+  },
+  "authentication": {
+    "envVar": "OPENAI_API_KEY",
+    "instructions": "Get your API key from https://platform.openai.com/api-keys"
+  },
+  "promptRequirements": {
+    "maxLength": 4000,
+    "style": "natural language with clear intent",
+    "tone": "conversational yet specific",
+    "guidelines": [
+      "Use natural, conversational language - DALL-E 3 understands context well",
+      "Be specific about the main subject and action",
+      "Describe style and artistic approach clearly",
+      "Include mood and atmosphere",
+      "Specify important details but trust the model's creative interpretation",
+      "Use clear, unambiguous language for critical elements",
+      "Layer information: subject → action → style → mood → details"
+    ],
+    "bestFor": [
+      "Conceptual and abstract art",
+      "Creative interpretations of ideas",
+      "Text within images (logos, signs, labels)",
+      "Surreal and imaginative scenes",
+      "Marketing and advertising visuals",
+      "Illustrations and digital art"
+    ],
+    "avoidances": [
+      "Overly technical photography jargon (DALL-E prefers natural descriptions)",
+      "Celebrity names or copyrighted characters",
+      "Brand names or trademarked content",
+      "Violent or inappropriate content"
+    ],
+    "examples": [
+      {
+        "userIntent": "button icon",
+        "basicPrompt": "A button icon",
+        "engineeredPrompt": "A modern, clean button icon with a play symbol. Flat design style with a gradient from bright blue to darker blue, white play triangle in the center. Simple, professional look suitable for a web interface, with subtle depth through the gradient."
+      },
+      {
+        "userIntent": "hero image for SaaS product",
+        "basicPrompt": "SaaS hero image",
+        "engineeredPrompt": "A hero image for a software-as-a-service platform. The scene shows a sleek, modern 3D dashboard floating in space with a gradient background from dark blue to purple. The dashboard displays glowing charts and data visualizations. There are subtle light effects and a sense of depth and innovation. Professional, tech-forward aesthetic perfect for a website header."
+      },
+      {
+        "userIntent": "realistic coffee shop scene",
+        "basicPrompt": "Coffee shop",
+        "engineeredPrompt": "A cozy coffee shop interior with warm, natural lighting. A beautifully crafted latte with foam art sits on a wooden table in the foreground, with steam rising from it. Soft afternoon sunlight streams through windows, creating a welcoming atmosphere. In the blurred background, you can see hanging lights, brick walls, and a barista at work. Photorealistic style with warm browns and ambers, focusing on the coffee with artistic depth of field."
+      }
+    ]
+  },
+  "parameters": {
+    "size": {
+      "type": "enum",
+      "description": "Image dimensions",
+      "values": ["1024x1024", "1024x1792", "1792x1024"],
+      "default": "1024x1024",
+      "recommendations": {
+        "1024x1024": "Square format - social media, icons, avatars, balanced compositions",
+        "1024x1792": "Portrait/vertical - mobile screens, posters, full-body portraits",
+        "1792x1024": "Landscape/horizontal - website headers, banners, wide scenes"
+      }
+    },
+    "quality": {
+      "type": "enum",
+      "description": "Image quality level",
+      "values": ["standard", "hd"],
+      "default": "standard",
+      "recommendations": {
+        "standard": "Good quality, faster generation, lower cost - suitable for most use cases",
+        "hd": "Higher detail and consistency, best for professional and detailed work"
+      }
+    },
+    "style": {
+      "type": "enum",
+      "description": "Visual style preference",
+      "values": ["vivid", "natural"],
+      "default": "vivid",
+      "recommendations": {
+        "vivid": "More dramatic, saturated colors and compositions - great for creative, eye-catching images",
+        "natural": "More subtle, realistic tones - better for photorealistic or documentary-style images"
+      }
+    }
+  },
+  "errorHandling": {
+    "missingApiKey": "OPENAI_API_KEY environment variable is not set. Get your API key from https://platform.openai.com/api-keys and set it in your environment.",
+    "rateLimitExceeded": "Rate limit exceeded for OpenAI API. Please check your usage limits at https://platform.openai.com/account/limits",
+    "contentPolicyViolation": "The prompt violated OpenAI's content policy. Please revise to remove any prohibited content (violence, adult content, etc.).",
+    "invalidSize": "The specified size is not supported. DALL-E 3 supports: 1024x1024, 1024x1792, 1792x1024",
+    "billingError": "Billing error with OpenAI account. Please check your payment method at https://platform.openai.com/account/billing"
+  },
+  "optimizationTips": {
+    "promptEngineering": [
+      "Trust DALL-E's creative interpretation - don't over-specify technical details",
+      "Use natural, conversational descriptions rather than keyword lists",
+      "Be explicit about the most important elements",
+      "Describe the mood and feeling you want to evoke",
+      "For logos or text, be very explicit about the exact text to include"
+    ],
+    "styleTransfer": [
+      "Describe the visual style in terms of artistic movements or well-known styles",
+      "When analyzing references, focus on: overall aesthetic, color mood, composition approach",
+      "Translate technical visual elements to natural language descriptions"
+    ],
+    "qualityVsSpeed": [
+      "Use 'standard' quality for iterations and testing",
+      "Use 'hd' quality for final deliverables",
+      "Consider the 'natural' style for more photorealistic results",
+      "Use 'vivid' style for marketing and attention-grabbing visuals"
+    ]
+  }
+}
