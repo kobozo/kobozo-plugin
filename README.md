@@ -6,21 +6,46 @@ A comprehensive collection of Claude Code plugins for software development, feat
 
 This repository contains 23 professional plugins that extend Claude Code with specialized workflows covering the entire software development lifecycle - from brainstorming and architecture to testing, deployment, and maintenance.
 
-## Quick Start
+### Why Use This Marketplace?
+
+- ✅ **Comprehensive Coverage**: 23 plugins covering UI, backend, testing, security, DevOps, and more
+- ✅ **Easy Installation**: Install directly from GitHub with a single command
+- ✅ **Production-Ready**: Battle-tested plugins used in real-world development
+- ✅ **Multi-Agent Workflows**: Specialized agents for complex tasks
+- ✅ **MCP Integration**: Leverage external services (context7, Playwright, Docker, etc.)
+- ✅ **Regular Updates**: Synced with official Claude Code plugins
+- ✅ **Open Source**: Free to use and customize
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- [Claude Code](https://docs.claude.com/en/docs/claude-code) installed
+- Claude Code version that supports plugin marketplaces
 
 ### Installation
 
-1. **Add this marketplace to Claude Code**:
+1. **Add this marketplace to Claude Code from GitHub**:
    ```bash
-   /plugin marketplace add /home/yannick/development/kobozo-plugins
+   /plugin marketplace add kobozo/kobozo-plugin
    ```
 
-2. **Install any plugin**:
+   This will clone the marketplace from GitHub and make all plugins available to install.
+
+2. **Browse and install plugins**:
    ```bash
-   /plugin install <plugin-name>@kobozo-plugins
+   /plugin
+   ```
+   Then select "kobozo-plugin" marketplace and choose plugins to install.
+
+   Or install directly:
+   ```bash
+   /plugin install <plugin-name>@kobozo-plugin
    ```
 
-3. **Use the plugin**:
+3. **Restart Claude Code** (if required by the plugin)
+
+4. **Use the plugin**:
    ```bash
    /<command-name>
    ```
@@ -28,11 +53,11 @@ This repository contains 23 professional plugins that extend Claude Code with sp
 ### Example
 
 ```bash
-# Add marketplace
-/plugin marketplace add /home/yannick/development/kobozo-plugins
+# Add marketplace from GitHub
+/plugin marketplace add kobozo/kobozo-plugin
 
 # Install bug-fixer plugin
-/plugin install bug-fixer@kobozo-plugins
+/plugin install bug-fixer@kobozo-plugin
 
 # Use it
 /fix-bug "Payment processing fails with invalid discount codes"
@@ -80,13 +105,14 @@ This repository contains 23 professional plugins that extend Claude Code with sp
 ---
 
 #### [feature-dev](./claude/plugins/feature-dev/README.md)
-**v1.0.0** - Guided feature development with codebase understanding
+**v1.1.0** - Guided feature development with codebase understanding and library research
 
 **Commands**:
 - `/feature-dev [description]` - Complete feature development workflow
 
 **Agents**:
 - **code-explorer** - Analyze existing patterns
+- **code-snippet-researcher** - Research library documentation (context7)
 - **code-architect** - Design feature architecture
 - **code-reviewer** - Review implementation quality
 
@@ -386,42 +412,42 @@ Provides security context and guidance for defensive security tasks.
 
 ### For UI/Frontend Developers
 ```bash
-/plugin install ui-checker@kobozo-plugins
-/plugin install onboarding-assistant@kobozo-plugins
-/plugin install i18n-manager@kobozo-plugins
+/plugin install ui-checker@kobozo-plugin
+/plugin install onboarding-assistant@kobozo-plugin
+/plugin install i18n-manager@kobozo-plugin
 ```
 
 ### For Backend Developers
 ```bash
-/plugin install api-documenter@kobozo-plugins
-/plugin install db-schema-manager@kobozo-plugins
-/plugin install security-auditor@kobozo-plugins
+/plugin install api-documenter@kobozo-plugin
+/plugin install db-schema-manager@kobozo-plugin
+/plugin install security-auditor@kobozo-plugin
 ```
 
 ### For Full-Stack Developers
 ```bash
-/plugin install feature-dev@kobozo-plugins
-/plugin install bug-fixer@kobozo-plugins
-/plugin install test-suite-generator@kobozo-plugins
+/plugin install feature-dev@kobozo-plugin
+/plugin install bug-fixer@kobozo-plugin
+/plugin install test-suite-generator@kobozo-plugin
 ```
 
 ### For DevOps Engineers
 ```bash
-/plugin install docker-compose-manager@kobozo-plugins
-/plugin install performance-optimizer@kobozo-plugins
+/plugin install docker-compose-manager@kobozo-plugin
+/plugin install performance-optimizer@kobozo-plugin
 ```
 
 ### For Team Leads
 ```bash
-/plugin install code-architect@kobozo-plugins
-/plugin install brainstorm@kobozo-plugins
-/plugin install clean-code-checker@kobozo-plugins
+/plugin install code-architect@kobozo-plugin
+/plugin install brainstorm@kobozo-plugin
+/plugin install clean-code-checker@kobozo-plugin
 ```
 
 ### For Security Specialists
 ```bash
-/plugin install security-auditor@kobozo-plugins
-/plugin install data-privacy-manager@kobozo-plugins
+/plugin install security-auditor@kobozo-plugin
+/plugin install data-privacy-manager@kobozo-plugin
 ```
 
 ## Plugin Development
@@ -562,13 +588,55 @@ Contributions are welcome! To contribute:
 /optimize-bundle
 ```
 
+## Troubleshooting
+
+### Marketplace not found
+
+**Issue**: "Marketplace not found" error when adding from GitHub
+
+**Solution**:
+- Ensure you have an internet connection
+- Verify the repository name is correct: `kobozo/kobozo-plugin`
+- Check that Claude Code has GitHub access
+- Try updating Claude Code to the latest version
+
+### Plugin installation fails
+
+**Issue**: Plugin fails to install from marketplace
+
+**Solution**:
+- Verify the marketplace was added successfully: `/plugin marketplace list`
+- Use the exact marketplace name: `@kobozo-plugin`
+- Try removing and re-adding the marketplace
+- Restart Claude Code after adding the marketplace
+
+### Plugin commands not working
+
+**Issue**: Plugin commands don't appear or don't work
+
+**Solution**:
+- Verify plugin is installed: `/plugin list`
+- Restart Claude Code after installing plugins
+- Check for any MCP server requirements (e.g., `CONTEXT7_API_KEY` for feature-dev)
+- Review plugin README for specific setup requirements
+
+### MCP server errors
+
+**Issue**: Plugin fails with MCP server connection errors
+
+**Solution**:
+- Check if required environment variables are set
+- Example: `export CONTEXT7_API_KEY=your_key` for feature-dev plugin
+- Add environment variables to your shell config (`.bashrc`, `.zshrc`)
+- Restart Claude Code after setting environment variables
+
 ## Support
 
 **Author**: Yannick De Backer
 **Email**: yannick@kobozo.eu
-**Repository**: `/home/yannick/development/kobozo-plugins`
+**GitHub**: [https://github.com/kobozo/kobozo-plugin](https://github.com/kobozo/kobozo-plugin)
 
-For issues, questions, or feature requests, please contact the author.
+For issues, questions, or feature requests, please open an issue on GitHub or contact the author.
 
 ## License
 
@@ -583,4 +651,5 @@ Custom plugin collection for Kobozo development.
 ---
 
 **Total Plugins**: 23 (18 Kobozo + 5 Official Claude)
-**Last Updated**: 2025-10-18
+**Version**: 1.1.0
+**Last Updated**: 2025-11-02
