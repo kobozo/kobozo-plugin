@@ -1,10 +1,10 @@
 # Feature Development Plugin
 
-A comprehensive, structured workflow for feature development with specialized agents for codebase exploration, architecture design, and quality review.
+A comprehensive, structured workflow for feature development with specialized agents for codebase exploration, code snippet research, architecture design, and quality review.
 
 ## Overview
 
-The Feature Development Plugin provides a systematic 7-phase approach to building new features. Instead of jumping straight into code, it guides you through understanding the codebase, asking clarifying questions, designing architecture, and ensuring quality—resulting in better-designed features that integrate seamlessly with your existing code.
+The Feature Development Plugin provides a systematic 8-phase approach to building new features. Instead of jumping straight into code, it guides you through understanding the codebase, researching library best practices, asking clarifying questions, designing architecture, and ensuring quality—resulting in better-designed features that integrate seamlessly with your existing code.
 
 ## Philosophy
 
@@ -18,7 +18,7 @@ This plugin embeds these practices into a structured workflow that runs automati
 
 ## Command: `/feature-dev`
 
-Launches a guided feature development workflow with 7 distinct phases.
+Launches a guided feature development workflow with 8 distinct phases.
 
 **Usage:**
 ```bash
@@ -32,7 +32,7 @@ Or simply:
 
 The command will guide you through the entire process interactively.
 
-## The 7-Phase Workflow
+## The 8-Phase Workflow
 
 ### Phase 1: Discovery
 
@@ -110,7 +110,55 @@ Before designing the architecture, I need to clarify:
 
 **Critical**: This phase ensures nothing is ambiguous before design begins.
 
-### Phase 4: Architecture Design
+### Phase 4: Code Snippet Research
+
+**Goal**: Research library patterns and best practices to inform architecture
+
+**What happens:**
+- Based on codebase exploration and user answers, identifies key libraries/frameworks to research
+- Launches 1-2 `code-snippet-researcher` agents targeting different libraries
+- Agents use context7 MCP to fetch up-to-date documentation and code examples
+- Reviews research findings and extracts actionable patterns
+- Presents summary of:
+  - Recommended patterns and approaches
+  - Critical APIs and function signatures
+  - Integration strategies
+  - Common pitfalls to avoid
+
+**Agents launched:**
+- "Research [library] patterns for [functionality]"
+- "Find [framework] best practices for [feature type]"
+- "Look up [library] examples for [use case]"
+
+**Example output:**
+```
+Context7 Research Findings:
+
+React Hooks for Authentication State:
+- Recommended: Custom useAuth hook with useContext
+- Critical APIs:
+  - createContext<AuthContext>()
+  - useContext(AuthContext): AuthState
+  - useState<User | null>(null)
+- Integration: Wrap app in AuthProvider
+- Gotcha: Don't call hooks conditionally
+
+Express OAuth Middleware:
+- Recommended: passport.js with passport-google-oauth20
+- Critical APIs:
+  - passport.use(new GoogleStrategy(...))
+  - passport.authenticate('google', { scope: [...] })
+- Integration: Mount before protected routes
+- Gotcha: Serialize/deserialize user for sessions
+
+References:
+- React Context: react.dev/reference/react/useContext
+- Passport.js: passportjs.org/docs
+```
+
+**Note**: Requires `CONTEXT7_API_KEY` environment variable.
+
+### Phase 5: Architecture Design
 
 **Goal**: Design multiple implementation approaches
 
@@ -155,7 +203,7 @@ excessive refactoring, and fits your existing architecture well.
 Which approach would you like to use?
 ```
 
-### Phase 5: Implementation
+### Phase 6: Implementation
 
 **Goal**: Build the feature
 
@@ -170,10 +218,11 @@ Which approach would you like to use?
 **Notes:**
 - Implementation only starts after you approve
 - Follows patterns discovered in Phase 2
-- Uses architecture designed in Phase 4
+- Informed by library research in Phase 4
+- Uses architecture designed in Phase 5
 - Continuously tracks progress
 
-### Phase 6: Quality Review
+### Phase 7: Quality Review
 
 **Goal**: Ensure code is simple, DRY, elegant, and functionally correct
 
@@ -207,7 +256,7 @@ All tests pass. Code follows project conventions.
 What would you like to do?
 ```
 
-### Phase 7: Summary
+### Phase 8: Summary
 
 **Goal**: Document what was accomplished
 
@@ -269,6 +318,33 @@ Suggested next steps:
 - Key components and responsibilities
 - Architecture insights
 - List of essential files to read
+
+### `code-snippet-researcher`
+
+**Purpose**: Researches library documentation and code examples using context7
+
+**Focus areas:**
+- Library-specific best practices
+- API usage patterns and examples
+- Integration strategies
+- Common pitfalls and gotchas
+- Functional programming patterns in libraries
+
+**When triggered:**
+- Automatically in Phase 4
+- Can be invoked manually when researching libraries
+
+**Output:**
+- Library name and version researched
+- Recommended patterns with code examples
+- Critical APIs with function signatures
+- Integration approaches
+- Common issues to avoid
+- Documentation references
+
+**Requirements:**
+- `CONTEXT7_API_KEY` environment variable must be set
+- Internet connection for MCP server
 
 ### `code-architect`
 
@@ -365,6 +441,10 @@ Let the workflow guide you through all 7 phases.
 - Claude Code installed
 - Git repository (for code review)
 - Project with existing codebase (workflow assumes existing code to learn from)
+- **`CONTEXT7_API_KEY` environment variable** (required for Phase 4: Code Snippet Research)
+  - Get your API key from [context7.ai](https://context7.ai)
+  - Set in your environment: `export CONTEXT7_API_KEY=your_key_here`
+  - Or add to your `.bashrc` / `.zshrc` for persistence
 
 ## Troubleshooting
 
@@ -388,12 +468,22 @@ Let the workflow guide you through all 7 phases.
 
 ### Architecture options overwhelming
 
-**Issue**: Too many architecture options in Phase 4
+**Issue**: Too many architecture options in Phase 5
 
 **Solution**:
 - Trust the recommendation—it's based on codebase analysis
 - If still unsure, ask for more explanation
 - Pick the pragmatic option when in doubt
+
+### Context7 API key error
+
+**Issue**: Phase 4 fails with "CONTEXT7_API_KEY not set"
+
+**Solution**:
+- Get API key from [context7.ai](https://context7.ai)
+- Set environment variable: `export CONTEXT7_API_KEY=your_key`
+- Restart Claude Code after setting the variable
+- Add to shell config for persistence (`.bashrc`, `.zshrc`)
 
 ## Tips
 
@@ -409,4 +499,17 @@ Sid Bidasaria (sbidasaria@anthropic.com)
 
 ## Version
 
-1.0.0
+1.1.0
+
+## Changelog
+
+### 1.1.0
+- Added Phase 4: Code Snippet Research with context7 MCP integration
+- Added `code-snippet-researcher` agent for library documentation research
+- Workflow extended from 7 to 8 phases
+- Added `CONTEXT7_API_KEY` environment variable requirement
+
+### 1.0.0
+- Initial release with 7-phase workflow
+- Three core agents: code-explorer, code-architect, code-reviewer
+- Functional programming first approach

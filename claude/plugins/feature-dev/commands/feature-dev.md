@@ -71,7 +71,31 @@ If the user says "whatever you think is best", provide your recommendation and g
 
 ---
 
-## Phase 4: Architecture Design
+## Phase 4: Code Snippet Research
+
+**Goal**: Research library patterns, best practices, and implementation examples to inform architecture
+
+**Actions**:
+1. Based on codebase exploration and user answers, identify key libraries/frameworks to research
+2. Launch 1-2 code-snippet-researcher agents in parallel targeting different libraries or aspects:
+   - Research specific library APIs needed for the feature
+   - Find best practices and common patterns
+   - Identify functional programming patterns in library usage
+
+   **Example agent prompts**:
+   - "Research [library] patterns for [specific functionality]"
+   - "Find [framework] best practices for [feature type]"
+   - "Look up [library] examples for [use case]"
+
+3. Review research findings and extract actionable patterns
+4. Present summary of key findings: recommended patterns, critical APIs, integration approaches, and gotchas
+5. Use these findings to inform architecture design in the next phase
+
+**Note**: This phase uses the context7 MCP server which requires `CONTEXT7_API_KEY` environment variable to be set.
+
+---
+
+## Phase 5: Architecture Design
 
 **Goal**: Design multiple implementation approaches with different trade-offs
 
@@ -83,7 +107,7 @@ If the user says "whatever you think is best", provide your recommendation and g
 
 ---
 
-## Phase 5: Implementation
+## Phase 6: Implementation
 
 **Goal**: Build the feature using functional programming principles
 
@@ -106,7 +130,7 @@ If the user says "whatever you think is best", provide your recommendation and g
 
 ---
 
-## Phase 6: Quality Review
+## Phase 7: Quality Review
 
 **Goal**: Ensure code is simple, DRY, elegant, easy to read, functionally correct, and follows FP principles
 
@@ -121,7 +145,7 @@ If the user says "whatever you think is best", provide your recommendation and g
 
 ---
 
-## Phase 7: Summary
+## Phase 8: Summary
 
 **Goal**: Document what was accomplished
 
