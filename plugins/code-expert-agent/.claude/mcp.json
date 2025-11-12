@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "chunkhound": {
+      "type": "stdio",
+      "command": "chunkhound",
+      "args": ["mcp", "/path/to/your/project"]
+    }
+  }
+}

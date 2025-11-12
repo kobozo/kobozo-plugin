@@ -260,6 +260,17 @@
       },
       "source": "./plugins/image-generator",
       "category": "creative"
+    },
+    {
+      "name": "code-expert-agent",
+      "description": "Deep code research agent powered by ChunkHound - performs iterative, comprehensive analysis discovering existing solutions, mapping architectural relationships, and identifying patterns before coding to prevent duplicate implementations",
+      "version": "1.0.0",
+      "author": {
+        "name": "Yannick De Backer",
+        "email": "yannick@kobozo.eu"
+      },
+      "source": "./plugins/code-expert-agent",
+      "category": "development"
     }
   ]
 }
