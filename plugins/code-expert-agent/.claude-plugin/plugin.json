@@ -1,0 +1,16 @@
+{
+  "name": "code-expert-agent",
+  "version": "1.0.0",
+  "description": "Deep code research agent powered by ChunkHound for comprehensive codebase analysis",
+  "author": {
+    "name": "Yannick De Backer",
+    "email": "yannick@kobozo.eu"
+  },
+  "mcpServers": {
+    "ChunkHound": {
+      "type": "stdio",
+      "command": "chunkhound",
+      "args": ["mcp", "/path/to/your/project"]
+    }
+  }
+}
