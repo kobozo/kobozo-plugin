@@ -271,6 +271,50 @@
       },
       "source": "./plugins/code-expert-agent",
       "category": "development"
+    },
+    {
+      "name": "code-review",
+      "description": "Automated pull request code review using specialized agents with confidence-based scoring to filter false positives",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anthropic",
+        "email": "noreply@anthropic.com"
+      },
+      "source": "./claude/plugins/code-review",
+      "category": "development"
+    },
+    {
+      "name": "explanatory-output-style",
+      "description": "SessionStart hook providing educational insights about implementation choices and codebase patterns (replaces deprecated Explanatory output style)",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anthropic",
+        "email": "noreply@anthropic.com"
+      },
+      "source": "./claude/plugins/explanatory-output-style",
+      "category": "learning"
+    },
+    {
+      "name": "frontend-design",
+      "description": "Skill for generating production-grade frontend interfaces with distinctive aesthetics, bold design choices, and high-impact animations",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anthropic",
+        "email": "noreply@anthropic.com"
+      },
+      "source": "./claude/plugins/frontend-design",
+      "category": "development"
+    },
+    {
+      "name": "learning-output-style",
+      "description": "SessionStart hook combining interactive learning mode with explanatory insights - engage in active coding at decision points while receiving educational guidance",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anthropic",
+        "email": "noreply@anthropic.com"
+      },
+      "source": "./claude/plugins/learning-output-style",
+      "category": "learning"
     }
   ]
 }
