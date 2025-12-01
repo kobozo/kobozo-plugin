@@ -18,12 +18,14 @@ This repository contains 23 professional plugins that extend Claude Code with sp
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### For Claude Code Users
+
+#### Prerequisites
 
 - [Claude Code](https://docs.claude.com/en/docs/claude-code) installed
 - Claude Code version that supports plugin marketplaces
 
-### Installation
+#### Installation
 
 1. **Add this marketplace to Claude Code from GitHub**:
    ```bash
@@ -62,6 +64,43 @@ This repository contains 23 professional plugins that extend Claude Code with sp
 # Use it
 /fix-bug "Payment processing fails with invalid discount codes"
 ```
+
+### For OpenCode Users
+
+**[OpenCode](https://opencode.ai)** is an AI coding agent built for the terminal, similar to Claude Code but with a different architecture.
+
+All plugins have been restructured for OpenCode compatibility in the `opencode/` directory.
+
+#### Quick Installation
+
+Create a symbolic link to use these plugins with OpenCode:
+
+```bash
+# Navigate to this repository
+cd /path/to/kobozo-plugin
+
+# Create symbolic link to OpenCode config directory
+ln -s $(pwd)/opencode ~/.config/opencode
+```
+
+Or link individual directories:
+
+```bash
+ln -s $(pwd)/opencode/agent ~/.config/opencode/agent
+ln -s $(pwd)/opencode/command ~/.config/opencode/command
+ln -s $(pwd)/opencode/opencode.json ~/.config/opencode/opencode.json
+```
+
+#### What You Get
+
+- **71 Specialized Agents** - All plugin agents in one place
+- **45 Custom Commands** - All slash commands ready to use
+- **6 MCP Servers** - Pre-configured external tools
+- **Single Configuration** - One `opencode.json` for everything
+
+See [opencode/README.md](./opencode/README.md) for detailed OpenCode setup instructions.
+
+---
 
 ## Plugin Categories
 
