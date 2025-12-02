@@ -1,0 +1,17 @@
+{
+  "description": "Bug-fixer quality gates - ensures fixes are validated before completion",
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Review the conversation transcript for this bug-fixing session. Verify ALL of the following before allowing completion:\n\n1. **Tests Executed**: Were tests actually run (npm test, pytest, cargo test, etc.)?\n2. **Tests Passing**: Did all tests pass? If any failed, the fix is incomplete.\n3. **Bug Verified Fixed**: Was the original bug reproduction attempted after the fix?\n4. **No Regressions**: Were related tests/functionality checked?\n\nIf ANY of these are false or unclear:\n- Return 'block' with a specific reason explaining what's missing\n- Example: 'block: Tests were not run after implementing the fix. Run npm test to verify.'\n\nIf ALL are satisfied:\n- Return 'approve' to allow completion\n\nBe strict - a thorough validation is more valuable than a premature completion.",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}

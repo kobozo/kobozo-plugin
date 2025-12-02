@@ -1,5 +1,7 @@
 ---
 description: Comprehensive bug fixing workflow with specialized agents for bug analysis, fix implementation, and validation
+argument-hint: "[bug description or issue number]"
+allowed-tools: Read, Write, Edit, Bash, Grep, Glob, TodoWrite, AskUserQuestion
 ---
 
 # Fix Bug
@@ -123,12 +125,30 @@ I need some information to analyze this bug effectively:
 
 ### Actions
 1. **Identify underspecified aspects**:
-   - How should invalid discount codes be handled?
+   - How should invalid input be handled?
    - Should we fail silently or show error to user?
    - What error message should user see?
    - Should we log these errors?
 
-2. **Present questions to user** in clear format
+2. **Use AskUserQuestion** for structured clarification:
+
+   ```markdown
+   Use the AskUserQuestion tool with up to 4 questions:
+
+   Question 1: "How should errors be displayed to users?"
+   Header: "Error display"
+   Options:
+     - Technical: Show full error details for debugging
+     - User-friendly: Show simple, actionable messages
+     - Silent: Log only, no user-facing error
+
+   Question 2: "Should we log these errors?"
+   Header: "Logging"
+   Options:
+     - Yes, as warnings: For monitoring and analytics
+     - Yes, as errors: For alerting on production issues
+     - No logging: Too noisy or not needed
+   ```
 
 3. **Wait for answers** before proceeding to fix design
 
@@ -179,12 +199,21 @@ Should we log these events for monitoring?
    - Error handling approach
    - Test strategy
 
-3. **Present fix approaches** with trade-offs:
-   - **Approach A**: Minimal fix (quick, low risk)
-   - **Approach B**: Defensive programming (robust, more code)
-   - **Approach C**: Refactoring (eliminates root cause, higher risk)
+3. **Use AskUserQuestion** for interactive fix approach selection:
 
-4. **Get user approval** before implementation
+   ```markdown
+   Use the AskUserQuestion tool with:
+
+   Question: "Which fix approach do you prefer?"
+   Header: "Fix approach"
+   multiSelect: false
+   Options:
+     - Minimal Fix: Quick and low risk, addresses immediate issue only
+     - Defensive Programming: Robust with validation, prevents similar issues
+     - Refactoring: Restructures code to eliminate root cause, higher risk
+   ```
+
+4. **Get user approval** before implementation - wait for AskUserQuestion response
 
 ### Expected Output
 ```markdown
