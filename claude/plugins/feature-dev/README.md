@@ -157,18 +157,78 @@ Which approach would you like to use?
 
 ### Phase 5: Implementation
 
-**Goal**: Build the feature
+**Goal**: Build the feature using intelligent multi-agent coordination
 
 **What happens:**
-- **Waits for explicit approval** before starting
+1. **Analyzes implementation complexity**:
+   - Counts files to create/modify
+   - Counts implementation phases from blueprint
+   - Applies heuristic to choose strategy
+2. **Chooses implementation strategy**:
+   - **Simple features** (≤5 files OR ≤2 phases): Single-agent implementation
+   - **Complex features** (>5 files AND >2 phases): Multi-agent parallel implementation
+3. **Waits for explicit approval** before starting
+
+**Single-Agent Implementation (Simple Features):**
 - Reads all relevant files identified in previous phases
 - Implements following chosen architecture
 - Follows codebase conventions strictly
 - Writes clean, well-documented code
 - Updates todos as progress is made
 
+**Multi-Agent Implementation (Complex Features):**
+1. **Creates work packages** grouped by layers:
+   - Foundation layer: Types, pure utility functions
+   - Business logic layer: Pure functions, composition
+   - Integration layer: Side effects, I/O
+   - Presentation layer: UI components (if applicable)
+2. **Detects dependencies** between packages
+3. **Presents work split** to user for approval
+4. **Launches code-implementer agents** in parallel groups:
+   - Group 1: Packages with no dependencies (parallel)
+   - Group 2: Packages depending on Group 1 (parallel)
+   - Group 3: Packages depending on Groups 1 or 2 (parallel)
+5. **Validates integration**:
+   - Checks for file conflicts
+   - Verifies integration points match blueprint
+   - Runs type checking and build validation
+6. **Handles issues**:
+   - Manually merges file conflicts if any
+   - Adds missing integration points
+   - Fixes type mismatches
+
+**Example work split:**
+```
+Work Package Split Analysis
+
+Complexity Assessment:
+- Total files: 8
+- Implementation phases: 4
+- Strategy: Multi-agent (parallel where possible)
+
+Work Packages:
+
+Package A: Foundation Layer (Agent 1)
+- Files to create: src/types/feature.ts, src/lib/utils.ts
+- Dependencies: None (can start immediately)
+
+Package B: Business Logic Layer (Agent 2)
+- Files to create: src/lib/calculator.ts, src/services/api.ts
+- Dependencies: Package A (needs types from Agent 1)
+
+Package C: UI Integration Layer (Agent 3)
+- Files to create: src/components/Panel.tsx
+- Dependencies: Package B (needs service from Agent 2)
+
+Total parallel groups: 3 (sequential due to dependencies)
+```
+
 **Notes:**
 - Implementation only starts after you approve
+- Multi-agent approach parallelizes independent work
+- Maximum 2-3 agents to keep coordination manageable
+- Agents work in sequential groups based on dependencies
+- Follows functional programming principles throughout
 - Follows patterns discovered in Phase 2
 - Uses architecture designed in Phase 4
 - Continuously tracks progress
@@ -303,7 +363,7 @@ Suggested next steps:
 - Confidence-based filtering (only reports high-confidence issues ≥80)
 
 **When triggered:**
-- Automatically in Phase 6
+- Automatically in Phase 7
 - Can be invoked manually after writing code
 
 **Output:**
@@ -311,6 +371,62 @@ Suggested next steps:
 - Important issues (confidence 50-74)
 - Specific fixes with file:line references
 - Project guideline references
+
+### `code-implementer`
+
+**Purpose**: Implements code based on architecture blueprints using functional programming
+
+**Focus areas:**
+- Translating architecture blueprints into production code
+- Functional programming principles (pure functions, immutability, composition)
+- Adhering to existing codebase patterns
+- Handling assigned work packages independently
+- Integration points with other agents
+
+**When triggered:**
+- Automatically in Phase 6 (single-agent or multi-agent mode)
+- Can be invoked manually for implementing specific components
+
+**Input:**
+- Architecture blueprint section
+- Work package definition (files to create/modify)
+- Dependencies on other agents' work
+- Integration points to implement
+
+**Output:**
+- Files created/modified
+- Exported interfaces/functions for integration
+- Functional programming compliance report
+- Testing results (if applicable)
+- Issues encountered
+
+**Key capabilities:**
+- Creates new files following functional programming patterns
+- Modifies existing files preserving immutability
+- Handles integration with placeholder types until dependencies complete
+- Reports completion with detailed summary
+- Validates functional programming principles throughout
+
+**Example output:**
+```
+Implementation Complete: Foundation Layer
+
+Files Created:
+1. src/types/feature.ts - Type definitions
+2. src/lib/feature-utils.ts - Pure utility functions
+
+Functional Programming Compliance:
+✅ All business logic uses pure functions
+✅ No mutations - immutable data structures throughout
+✅ Function composition for complex logic
+✅ Declarative patterns (map/filter/reduce)
+
+Integration Points:
+- Exports for Agent 2: FeatureInput, FeatureOutput types
+- Dependencies: None (independent work package)
+
+Testing: All property-based tests passing ✅
+```
 
 ## Usage Patterns
 
@@ -409,4 +525,27 @@ Sid Bidasaria (sbidasaria@anthropic.com)
 
 ## Version
 
-1.0.0
+1.2.0
+
+## Changelog
+
+### 1.2.0
+- Added intelligent multi-agent implementation in Phase 6
+- Added `code-implementer` agent for translating blueprints to code
+- Implementation automatically chooses single-agent or multi-agent based on complexity
+- Multi-agent mode parallelizes independent work packages (2-3 agents max)
+- Work packages organized by layers: foundation, business logic, integration, presentation
+- Dependency-based scheduling with parallel groups
+- Integration validation with file conflict detection
+- Maintains functional programming principles throughout multi-agent coordination
+
+### 1.1.0
+- Added Phase 4: Code Snippet Research with context7 MCP integration
+- Added `code-snippet-researcher` agent for library documentation research
+- Workflow extended from 7 to 8 phases
+- Added `CONTEXT7_API_KEY` environment variable requirement
+
+### 1.0.0
+- Initial release with 7-phase workflow
+- Three core agents: code-explorer, code-architect, code-reviewer
+- Functional programming first approach

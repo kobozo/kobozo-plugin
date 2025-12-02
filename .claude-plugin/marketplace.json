@@ -186,8 +186,8 @@
     },
     {
       "name": "feature-dev",
-      "description": "Enhanced feature development workflow with git commit/push - codebase exploration, architecture design, quality review, and automated git operations (from official Claude Code)",
-      "version": "1.1.0",
+      "description": "Enhanced feature development workflow with intelligent multi-agent implementation - automatically parallelizes complex features, maintains functional programming principles (from official Claude Code)",
+      "version": "1.2.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -281,6 +281,17 @@
         "email": "whu@anthropic.com"
       },
       "source": "./claude/plugins/claude-opus-4-5-migration",
+      "category": "development"
+    },
+    {
+      "name": "code-review",
+      "description": "Automated pull request code review using specialized agents with confidence-based scoring to filter false positives",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anthropic",
+        "email": "noreply@anthropic.com"
+      },
+      "source": "./claude/plugins/code-review",
       "category": "development"
     },
     {
