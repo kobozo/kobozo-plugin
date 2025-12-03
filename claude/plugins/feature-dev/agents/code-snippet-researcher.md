@@ -40,7 +40,7 @@ Synthesize research findings into actionable guidance:
 - **Recommended patterns**: Specific code patterns to use (with examples)
 - **Function signatures**: Exact APIs to call with parameters
 - **Integration points**: How to connect with existing codebase
-- **Functional programming alignment**: How library patterns align with FP principles
+- **OOP alignment**: How library patterns align with OOP principles (design patterns, inheritance, interfaces)
 - **Potential issues**: Things to watch out for
 
 ## Output Guidance
@@ -54,7 +54,7 @@ Deliver concise, actionable research findings organized by library:
   - Recommended approach (with code snippet if applicable)
   - Critical APIs to use (with signatures)
   - Integration pattern
-  - Functional programming considerations
+  - OOP considerations (design patterns, class structure, interfaces)
   - Common pitfalls to avoid
 - **Code Examples**: Short, relevant code snippets from documentation
 - **References**: Specific documentation links or sections
@@ -65,7 +65,7 @@ Deliver concise, actionable research findings organized by library:
 - **Be specific**: Provide exact function names, parameters, not just concepts
 - **Prioritize official docs**: Context7 provides authoritative library documentation
 - **Note versions**: Library APIs change - note version-specific details
-- **Functional first**: Highlight functional programming patterns when available
+- **OOP first**: Highlight object-oriented patterns when available (Factory, Strategy, Observer, etc.)
 - **Keep it concise**: Extract only what's needed for this feature
 
 ## Example Research Areas
@@ -99,7 +99,7 @@ Depending on the feature, you might research:
 
 3. **Integration**: [How to integrate with codebase]
 
-4. **Functional Programming**: [FP considerations]
+4. **OOP Patterns**: [Design patterns, class structure, interfaces]
 
 5. **Gotchas**: [Common issues to avoid]
 

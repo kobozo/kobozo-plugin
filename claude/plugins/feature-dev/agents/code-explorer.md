@@ -30,6 +30,13 @@ Provide a complete understanding of how a specific feature works by tracing its 
 - Document interfaces between components
 - Note cross-cutting concerns (auth, logging, caching)
 
+**OOP Pattern Discovery**:
+- Identify design patterns (Factory, Strategy, Observer, Decorator, Singleton, etc.)
+- Map inheritance hierarchies and class relationships
+- Find abstract classes, interfaces, and their implementations
+- Document composition vs inheritance decisions
+- Locate dependency injection patterns
+
 **4. Implementation Details**
 - Key algorithms and data structures
 - Error handling and edge cases

@@ -9,11 +9,11 @@ You are helping a developer implement a new feature. Follow a systematic approac
 
 ## Core Principles
 
-- **Functional Programming First**: Always prefer functional programming approaches - use pure functions, immutability, function composition, and declarative patterns. Avoid mutations, side effects, and imperative code unless absolutely necessary.
+- **Object-Oriented Programming First**: Always prefer OOP approaches - use SOLID principles, design patterns, proper inheritance hierarchies, and encapsulation. Apply patterns like Factory, Strategy, Observer, and Decorator where appropriate. Prefer composition over inheritance.
 - **Ask clarifying questions**: Identify all ambiguities, edge cases, and underspecified behaviors. Ask specific, concrete questions rather than making assumptions. Wait for user answers before proceeding with implementation. Ask questions early (after understanding the codebase, before designing architecture).
 - **Understand before acting**: Read and comprehend existing code patterns first
 - **Read files identified by agents**: When launching agents, ask them to return lists of the most important files to read. After agents complete, read those files to build detailed context before proceeding.
-- **Simple and elegant**: Prioritize readable, maintainable, architecturally sound code using functional paradigms
+- **Simple and elegant**: Prioritize readable, maintainable, architecturally sound code using OOP paradigms
 - **Use TodoWrite**: Track all progress throughout
 
 ---
@@ -80,7 +80,7 @@ If the user says "whatever you think is best", provide your recommendation and g
 2. Launch 1-2 code-snippet-researcher agents in parallel targeting different libraries or aspects:
    - Research specific library APIs needed for the feature
    - Find best practices and common patterns
-   - Identify functional programming patterns in library usage
+   - Identify OOP patterns in library usage (design patterns, class hierarchies)
 
    **Example agent prompts**:
    - "Research [library] patterns for [specific functionality]"
@@ -102,14 +102,19 @@ If the user says "whatever you think is best", provide your recommendation and g
 **Actions**:
 1. Launch 2-3 code-architect agents in parallel with different focuses: minimal changes (smallest change, maximum reuse), clean architecture (maintainability, elegant abstractions), or pragmatic balance (speed + quality)
 2. Review all approaches and form your opinion on which fits best for this specific task (consider: small fix vs large feature, urgency, complexity, team context)
-3. Present to user: brief summary of each approach, trade-offs comparison, **your recommendation with reasoning**, concrete implementation differences
-4. **Ask user which approach they prefer**
+3. **OOP Validation**: Launch `oop-validator` agent to:
+   - Validate design pattern appropriateness in proposed architecture
+   - Check inheritance hierarchy depth (max 3 levels)
+   - Search for existing patterns via ChunkHound (if available)
+   - Report any OOP anti-patterns
+4. Present to user: brief summary of each approach, trade-offs comparison, **your recommendation with reasoning**, concrete implementation differences, and OOP validation findings
+5. **Ask user which approach they prefer**
 
 ---
 
 ## Phase 6: Implementation
 
-**Goal**: Build the feature using functional programming principles with intelligent multi-agent coordination
+**Goal**: Build the feature using object-oriented programming principles with intelligent multi-agent coordination
 
 **DO NOT START WITHOUT USER APPROVAL**
 
@@ -133,14 +138,25 @@ If the user says "whatever you think is best", provide your recommendation and g
 **Actions**:
 1. Wait for explicit user approval
 2. Read all relevant files identified in previous phases
-3. Implement following chosen architecture with **functional programming**:
-   - Use **pure functions** - functions without side effects that return the same output for the same input
-   - Prefer **immutability** - avoid mutating data, use spread operators, Object.freeze(), or immutable data structures
-   - Apply **function composition** - build complex behavior by composing small, focused functions
-   - Use **declarative patterns** - map, filter, reduce, pipe, compose instead of loops
-   - Minimize **side effects** - isolate I/O, state changes, and mutations at boundaries
-   - Leverage **higher-order functions** - functions that take or return other functions
-   - Avoid **classes and OOP patterns** unless required by framework constraints
+3. Implement following chosen architecture with **Object-Oriented Programming**:
+   - Follow **SOLID principles** strictly:
+     - Single Responsibility: One class, one purpose
+     - Open/Closed: Extend via inheritance/composition, don't modify
+     - Liskov Substitution: Subtypes must be substitutable
+     - Interface Segregation: Focused, specific interfaces
+     - Dependency Inversion: Depend on abstractions
+   - Apply **design patterns** appropriately:
+     - Factory/Builder for object creation
+     - Strategy for interchangeable algorithms
+     - Observer for event handling
+     - Decorator for dynamic behavior
+   - Maintain **proper inheritance**:
+     - Maximum 3 levels of depth
+     - Prefer composition over inheritance
+     - Use abstract classes for shared behavior
+   - Ensure **encapsulation**:
+     - Private fields, public methods
+     - Proper getters/setters where needed
 4. Follow codebase conventions strictly
 5. Write clean, well-documented code with clear function signatures
 6. Update todos as you progress
@@ -156,10 +172,10 @@ If the user says "whatever you think is best", provide your recommendation and g
 **Analyze architecture blueprint to create work packages:**
 
 1. **Group by implementation phases** from blueprint:
-   - Phase 1: Foundation layer (types, pure utility functions)
-   - Phase 2: Business logic layer (pure functions, composition)
-   - Phase 3: Integration layer (side effects, I/O)
-   - Phase 4: Presentation layer (UI components, if applicable)
+   - Phase 1: Foundation layer (interfaces, abstract classes, value objects)
+   - Phase 2: Core domain layer (concrete classes, business logic)
+   - Phase 3: Infrastructure layer (repositories, services, adapters)
+   - Phase 4: Presentation layer (UI components, controllers, if applicable)
 
 2. **Detect file dependencies**:
    - Files that import each other must be in same package or sequential packages
@@ -185,8 +201,8 @@ If the user says "whatever you think is best", provide your recommendation and g
 ### Package A: Foundation Layer
 - **Agent**: code-implementer (Agent 1)
 - **Files to create**:
-  - `src/types/feature.ts` - Type definitions
-  - `src/lib/feature-utils.ts` - Pure utility functions
+  - `src/interfaces/feature.ts` - Interface definitions
+  - `src/classes/base-feature.ts` - Abstract base class
 - **Files to modify**:
   - None
 - **Dependencies**: None (can start immediately)
@@ -195,8 +211,8 @@ If the user says "whatever you think is best", provide your recommendation and g
 ### Package B: Business Logic Layer
 - **Agent**: code-implementer (Agent 2)
 - **Files to create**:
-  - `src/lib/feature-calculator.ts` - Pure business logic
-  - `src/services/feature-service.ts` - Side effect wrappers
+  - `src/classes/feature-calculator.ts` - Business logic class
+  - `src/services/feature-service.ts` - Service layer implementation
 - **Files to modify**:
   - `src/services/api.ts:45` - Add new endpoint
 - **Dependencies**: Package A (needs types from Agent 1)
@@ -240,19 +256,19 @@ You are implementing Package A: Foundation Layer
 **Architecture Blueprint Section**: [paste relevant section]
 
 **Your Work Package:**
-- Files to create: `src/types/feature.ts`, `src/lib/feature-utils.ts`
+- Files to create: `src/interfaces/feature.ts`, `src/classes/base-feature.ts`
 - Files to modify: None
 - Dependencies: None
 
 **Integration Points:**
-- Exports for Agent 2: FeatureInput, FeatureOutput types
-- Exports for Agent 3: validateFeatureInput() function
+- Exports for Agent 2: IFeatureCalculator interface, BaseFeature abstract class
+- Exports for Agent 3: IFeatureService interface
 
-Focus: Pure functions only, no side effects. Follow functional programming principles strictly.
+Focus: Interfaces and abstract classes first. Follow OOP principles strictly.
 
 **Important:** Report completion summary with:
 1. Files created/modified
-2. Exported interfaces/functions
+2. Exported interfaces/classes
 3. Any issues encountered
 ```
 
@@ -299,7 +315,7 @@ Focus: Pure functions only, no side effects. Follow functional programming princ
 
 1. **File conflicts**:
    - Read both versions
-   - Manually merge using functional programming principles
+   - Manually merge using OOP principles
    - Preserve work from both agents
    - Ask user if uncertain
 
@@ -319,8 +335,8 @@ Focus: Pure functions only, no side effects. Follow functional programming princ
 
 1. **Final validation**:
    - All files from blueprint created/modified ✓
-   - Functional programming principles followed ✓
-   - No mutations introduced ✓
+   - OOP principles followed (SOLID, proper inheritance, encapsulation) ✓
+   - Design patterns applied correctly ✓
    - Tests passing (if written) ✓
 
 2. **Update todos** to mark Phase 6 complete
@@ -331,16 +347,24 @@ Focus: Pure functions only, no side effects. Follow functional programming princ
 
 ## Phase 7: Quality Review
 
-**Goal**: Ensure code is simple, DRY, elegant, easy to read, functionally correct, and follows FP principles
+**Goal**: Ensure code is simple, DRY, elegant, easy to read, functionally correct, and follows OOP principles
 
 **Actions**:
 1. Launch 3 code-reviewer agents in parallel with different focuses:
-   - **Simplicity/DRY/Elegance**: Check for functional patterns, composition, immutability
-   - **Bugs/Functional Correctness**: Verify pure functions, proper side effect handling
-   - **FP Principles**: Validate functional programming adherence - no mutations, pure functions, composition
-2. Consolidate findings and identify highest severity issues that you recommend fixing
-3. **Present findings to user and ask what they want to do** (fix now, fix later, or proceed as-is)
-4. Address issues based on user decision
+   - **Simplicity/DRY/Elegance**: Check for proper abstraction, composition, encapsulation
+   - **Bugs/Functional Correctness**: Verify proper polymorphism, exception handling
+   - **OOP Principles**: Validate SOLID adherence, design pattern correctness, inheritance hierarchy
+
+2. Launch `oop-validator` agent for dedicated OOP validation:
+   - Validate SOLID principles across all new/modified code
+   - Check design pattern implementations
+   - Analyze inheritance hierarchies (max 3 levels)
+   - Use ChunkHound (if available) to find missed reuse opportunities
+   - Flag any OOP anti-patterns (God class, Blob, etc.)
+
+3. Consolidate findings from all 4 agents and identify highest severity OOP issues
+4. **Present findings to user and ask what they want to do** (fix now, fix later, or proceed as-is)
+5. Address issues based on user decision
 
 ---
 
