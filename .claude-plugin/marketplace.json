@@ -208,8 +208,8 @@
     },
     {
       "name": "commit-commands",
-      "description": "Git commit helper commands - commit, commit-push-pr, and clean gone branches",
-      "version": "1.0.0",
+      "description": "Git workflow by skill - triggers on 'commit this', 'push this', 'create a PR' plus explicit /commit commands",
+      "version": "2.0.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"

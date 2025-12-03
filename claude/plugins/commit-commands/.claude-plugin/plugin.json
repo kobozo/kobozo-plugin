@@ -1,7 +1,7 @@
 {
   "name": "commit-commands",
-  "description": "Streamline your git workflow with simple commands for committing, pushing, and creating pull requests",
-  "version": "1.0.0",
+  "description": "Git workflow by skill - triggers on 'commit this', 'push this', 'create a PR' for seamless git operations",
+  "version": "2.0.0",
   "author": {
     "name": "Anthropic",
     "email": "support@anthropic.com"
