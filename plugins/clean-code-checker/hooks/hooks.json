@@ -1,0 +1,17 @@
+{
+  "description": "Clean code validation hooks - provide feedback on code quality after writes",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Briefly review the code that was just written for clean code issues. Check for:\n\n1. **SOLID violations**: Classes with multiple responsibilities, tight coupling\n2. **Long functions**: Functions over 30 lines that should be split\n3. **Code smells**: Duplicate code, long parameter lists, deep nesting\n4. **Naming issues**: Unclear variable/function names\n5. **Complexity**: High cyclomatic complexity, deeply nested conditions\n\nProvide a brief, constructive feedback message (2-3 sentences max) if you notice significant issues. Focus on the most important improvement.\n\nIf the code is clean, simply acknowledge with no detailed feedback.\n\nThis is feedback only - do not block the operation.",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}

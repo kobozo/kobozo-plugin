@@ -1,7 +1,7 @@
 {
   "name": "code-architect",
-  "version": "1.0.0",
-  "description": "Generate comprehensive architecture documentation with dependency graphs, visualizations, and system design docs",
+  "version": "2.0.0",
+  "description": "Architecture thinking by default - skill provides design patterns and system decomposition guidance, commands generate documentation with diagrams and ADRs",
   "author": {
     "name": "Yannick De Backer",
     "email": "yannick@kobozo.eu"

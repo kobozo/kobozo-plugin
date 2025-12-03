@@ -43,8 +43,8 @@
     },
     {
       "name": "security-auditor",
-      "description": "Scan for security vulnerabilities, check dependencies, and validate authentication/authorization implementations",
-      "version": "1.0.0",
+      "description": "Security by default - proactive hooks block vulnerabilities, skill provides OWASP awareness, commands run comprehensive audits",
+      "version": "2.0.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -54,8 +54,8 @@
     },
     {
       "name": "performance-optimizer",
-      "description": "Analyze and optimize application performance - identify bottlenecks, reduce bundle sizes, and optimize database queries",
-      "version": "1.0.0",
+      "description": "Performance by default - hooks catch N+1 queries and anti-patterns, skill teaches optimization patterns, commands run deep profiling",
+      "version": "2.0.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -109,8 +109,8 @@
     },
     {
       "name": "code-architect",
-      "description": "Generate comprehensive architecture documentation with dependency graphs, visualizations, C4 models, UML diagrams, and system design docs using MCP servers",
-      "version": "1.0.0",
+      "description": "Architecture thinking by default - skill provides design patterns and system decomposition guidance, commands generate documentation with diagrams and ADRs",
+      "version": "2.0.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -120,8 +120,8 @@
     },
     {
       "name": "clean-code-checker",
-      "description": "Detect code duplication, identify code smells, enforce clean code principles (SOLID, DRY), and provide refactoring recommendations using jscpd, ESLint, and SonarQube MCP",
-      "version": "1.0.0",
+      "description": "Clean code by default - hooks provide real-time feedback, skill teaches SOLID/DRY principles, commands run comprehensive analysis",
+      "version": "2.0.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -164,8 +164,8 @@
     },
     {
       "name": "brainstorm",
-      "description": "Research-driven brainstorming tool - explore ideas with web research and codebase analysis, generate comprehensive implementation specifications without changing code",
-      "version": "1.1.0",
+      "description": "Research-driven brainstorming - skill provides methodology for exploring ideas, command generates comprehensive implementation specifications with documentation",
+      "version": "2.0.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -175,8 +175,8 @@
     },
     {
       "name": "dead-code-detector",
-      "description": "Detect and eliminate unutilized code blocks, unused functions, dead imports, and obsolete code paths for cleaner codebases using ts-prune, knip, and ESLint",
-      "version": "1.0.0",
+      "description": "Clean codebases by default - hooks catch orphaned code after edits, skill teaches dead code patterns, commands run comprehensive scans",
+      "version": "2.0.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -263,8 +263,8 @@
     },
     {
       "name": "code-expert-agent",
-      "description": "Deep code research agent powered by ChunkHound - performs iterative, comprehensive analysis discovering existing solutions, mapping architectural relationships, and identifying patterns before coding to prevent duplicate implementations",
-      "version": "1.0.0",
+      "description": "Deep code research skill and agent powered by ChunkHound - provides systematic methodology for discovering existing solutions, mapping architecture, and identifying patterns before coding",
+      "version": "2.0.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"

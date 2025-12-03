@@ -1,0 +1,17 @@
+{
+  "description": "Performance feedback hooks - detect common performance anti-patterns",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Quickly scan the code that was just written for performance anti-patterns. Check for:\n\n1. **N+1 queries**: Database queries inside loops\n2. **Missing pagination**: Large dataset queries without limits\n3. **Sequential async**: Independent async operations that could be parallelized\n4. **Inefficient loops**: Array.find() inside loops (should use Map), repeated work inside loops\n5. **Heavy imports**: Full library imports that could be tree-shaken\n\nProvide brief, actionable feedback (1-2 sentences) only if you notice a significant performance issue. Include the specific fix.\n\nIf the code looks performant, no feedback needed.\n\nThis is feedback only - do not block.",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}

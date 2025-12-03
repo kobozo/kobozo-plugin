@@ -1,0 +1,29 @@
+{
+  "description": "Security validation hooks - automatically check code for common vulnerabilities",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Review the code being written for security vulnerabilities. Check for:\n\n1. **Injection vulnerabilities**: SQL injection (string concatenation in queries), command injection (shell commands with user input)\n2. **XSS vulnerabilities**: Unsanitized user input rendered as HTML\n3. **Hardcoded secrets**: API keys, passwords, tokens in source code\n4. **Insecure authentication**: Weak password handling, missing auth checks\n5. **Path traversal**: User input in file paths without validation\n\nIf you find a CRITICAL security issue that would introduce a vulnerability:\n- Return 'deny' with explanation of the vulnerability\n- Suggest the secure alternative\n\nIf the code is safe or has only minor concerns:\n- Return 'approve'\n- Include any security recommendations as feedback\n\nFocus on actual vulnerabilities, not stylistic preferences. Only block for genuine security risks.",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Check if this bash command installed any packages (npm install, pip install, yarn add, etc.). If packages were installed, remind about running dependency security checks:\n- npm audit\n- pip-audit\n- yarn audit\n\nProvide this as helpful feedback, do not block.",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

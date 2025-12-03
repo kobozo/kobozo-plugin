@@ -1,0 +1,17 @@
+{
+  "description": "Dead code detection hooks - warn about potentially orphaned code after edits",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Check if this edit may have created dead code. Look for:\n\n1. **Orphaned imports**: Did removing code leave unused imports?\n2. **Unreferenced functions**: Did refactoring leave helper functions without callers?\n3. **Unused variables**: Did changes leave variables that are assigned but never read?\n4. **Commented-out code**: Was old code commented instead of deleted?\n\nIf you notice potential dead code, provide brief feedback (1 sentence) suggesting cleanup.\n\nIf the edit looks clean, no feedback needed.\n\nThis is feedback only - do not block.",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

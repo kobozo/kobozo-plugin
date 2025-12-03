@@ -1,7 +1,7 @@
 {
   "name": "security-auditor",
-  "version": "1.0.0",
-  "description": "Scan for security vulnerabilities, check dependencies, and validate authentication/authorization implementations",
+  "version": "2.0.0",
+  "description": "Security by default - proactive hooks block vulnerabilities, skill provides OWASP awareness, commands run comprehensive audits",
   "author": {
     "name": "Yannick De Backer",
     "email": "yannick@kobozo.eu"

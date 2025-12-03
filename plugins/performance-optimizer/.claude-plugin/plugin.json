@@ -1,7 +1,7 @@
 {
   "name": "performance-optimizer",
-  "version": "1.0.0",
-  "description": "Analyze and optimize application performance - identify bottlenecks, reduce bundle sizes, and optimize database queries",
+  "version": "2.0.0",
+  "description": "Performance by default - hooks catch N+1 queries and anti-patterns, skill teaches optimization patterns, commands run deep profiling",
   "author": {
     "name": "Yannick De Backer",
     "email": "yannick@kobozo.eu"

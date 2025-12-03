@@ -1,7 +1,7 @@
 {
   "name": "code-expert-agent",
-  "version": "1.0.0",
-  "description": "Deep code research agent powered by ChunkHound for comprehensive codebase analysis",
+  "version": "2.0.0",
+  "description": "Deep code research skill and agent powered by ChunkHound - provides systematic methodology for discovering existing solutions, mapping architecture, and identifying patterns before coding",
   "author": {
     "name": "Yannick De Backer",
     "email": "yannick@kobozo.eu"
