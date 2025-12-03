@@ -154,7 +154,7 @@
     {
       "name": "docker-compose-manager",
       "description": "Manage Docker Compose environments with nginx routing - orchestrate multi-service stacks, configure reverse proxy, monitor services using Docker MCP",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
