@@ -1,6 +1,6 @@
 ---
 name: Security Awareness
-description: This skill should be used when writing code that handles user input, authentication, authorization, database queries, file operations, external API calls, cryptography, or any security-sensitive functionality. Provides OWASP Top 10 awareness, secure coding patterns, and vulnerability prevention guidance. Apply this knowledge proactively when writing or reviewing code.
+description: This skill should be used when the user asks to "security audit", "check vulnerabilities", "scan dependencies", "review security", "check for security issues", "audit code security", or when writing code that handles user input, authentication, authorization, database queries, file operations, external API calls, cryptography, or any security-sensitive functionality. Provides OWASP Top 10 awareness, secure coding patterns, and vulnerability prevention guidance. Apply this knowledge proactively when writing or reviewing code.
 version: 1.0.0
 ---
 
@@ -233,6 +233,22 @@ const allowedMimes = ['image/jpeg', 'image/png'];
 if (!allowedMimes.includes(file.mimetype)) {
   throw new Error('Invalid file type');
 }
+```
+
+## Invoke Full Workflow
+
+For comprehensive security auditing with specialized agents:
+
+**Use the Task tool** to launch security auditor agents:
+
+1. **Dependency Scan**: Launch `security-auditor:dependency-scanner` to check for vulnerable dependencies
+2. **Code Analysis**: Launch `security-auditor:code-security-analyzer` to scan for code vulnerabilities
+3. **Auth Review**: Launch `security-auditor:auth-reviewer` to review authentication/authorization
+
+**Example prompt for agent:**
+```
+Run a comprehensive security audit of the codebase.
+Check dependencies for vulnerabilities and analyze authentication code.
 ```
 
 ## Additional Resources

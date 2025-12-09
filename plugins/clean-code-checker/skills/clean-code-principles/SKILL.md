@@ -1,6 +1,6 @@
 ---
 name: Clean Code Principles
-description: This skill should be used when writing or reviewing code to ensure it follows clean code principles. Apply when creating functions, classes, modules, or any code structure. Provides guidance on SOLID principles, code smells, complexity management, and maintainability. Use proactively to write better code from the start.
+description: This skill should be used when writing or reviewing code, when the user asks to "analyze code quality", "check code smells", "detect duplication", "review code quality", "refactor this", or needs help with clean code principles. Apply when creating functions, classes, modules, or analyzing existing code. Provides guidance on SOLID principles, code smells, complexity management, and maintainability.
 version: 1.0.0
 ---
 

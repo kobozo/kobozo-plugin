@@ -1,6 +1,6 @@
 ---
 name: Dead Code Awareness
-description: This skill should be used when editing, refactoring, or reviewing code to identify and clean up dead code. Apply when removing features, changing function signatures, or refactoring modules. Helps recognize unused imports, unreferenced functions, orphaned files, and obsolete code paths.
+description: This skill should be used when the user asks to "find dead code", "remove unused code", "clean up codebase", "scan dead code", "detect unused imports", "find orphaned files", or when editing, refactoring, or reviewing code to identify and clean up dead code. Apply when removing features, changing function signatures, or refactoring modules. Helps recognize unused imports, unreferenced functions, orphaned files, and obsolete code paths.
 version: 1.0.0
 ---
 
@@ -233,6 +233,22 @@ function loadPlugins() { }
 4. Remove code
 5. Run tests again
 6. Check bundle size reduced
+
+## Invoke Full Workflow
+
+For comprehensive dead code detection and cleanup:
+
+**Use the Task tool** to launch dead code detector agents:
+
+1. **Dead Code Scan**: Launch `dead-code-detector:dead-code-scanner` to detect unused functions, files, and code paths
+2. **Import Analysis**: Launch `dead-code-detector:unused-import-detector` to find and fix unused imports
+3. **Cleanup Advice**: Launch `dead-code-detector:cleanup-advisor` for safe removal recommendations
+
+**Example prompt for agent:**
+```
+Scan the codebase for dead code and unused imports.
+Provide safe cleanup recommendations with impact analysis.
+```
 
 ## Additional Resources
 

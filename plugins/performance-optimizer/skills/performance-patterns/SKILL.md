@@ -1,6 +1,6 @@
 ---
 name: Performance Patterns
-description: This skill should be used when writing code that involves database queries, loops, data processing, API calls, caching, or any performance-sensitive operations. Provides guidance on avoiding N+1 queries, optimizing loops, efficient data structures, caching strategies, and bundle optimization. Apply proactively when writing code.
+description: This skill should be used when the user asks to "profile performance", "optimize performance", "find bottlenecks", "optimize bundle", "improve speed", "reduce bundle size", or when writing code that involves database queries, loops, data processing, API calls, caching, or any performance-sensitive operations. Provides guidance on avoiding N+1 queries, optimizing loops, efficient data structures, caching strategies, and bundle optimization. Apply proactively when writing code.
 version: 1.0.0
 ---
 
@@ -333,6 +333,22 @@ async function generatePdf() {
 - [ ] Lazy load routes/components
 - [ ] Smaller library alternatives
 - [ ] Dynamic imports for heavy libs
+
+## Invoke Full Workflow
+
+For comprehensive performance optimization with specialized agents:
+
+**Use the Task tool** to launch performance optimizer agents:
+
+1. **Performance Analysis**: Launch `performance-optimizer:performance-analyzer` to identify bottlenecks
+2. **Bundle Optimization**: Launch `performance-optimizer:bundle-optimizer` to reduce JavaScript bundle sizes
+3. **Query Optimization**: Launch `performance-optimizer:query-optimizer` to optimize database queries
+
+**Example prompt for agent:**
+```
+Profile the application performance and identify bottlenecks.
+Focus on database queries and bundle size optimization.
+```
 
 ## Additional Resources
 

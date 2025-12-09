@@ -1,6 +1,6 @@
 ---
 name: Architecture Thinking
-description: This skill should be used when designing systems, planning components, organizing code structure, or making architectural decisions. Apply when user asks about "how to structure", "system design", "component organization", "module boundaries", or when building features that span multiple components. Provides guidance on layered architecture, dependency management, and system decomposition.
+description: This skill should be used when the user asks to "analyze architecture", "generate architecture docs", "design system structure", "create dependency diagram", "how to structure", "system design", "component organization", "module boundaries", or when building features that span multiple components. Provides guidance on layered architecture, dependency management, and system decomposition.
 version: 1.0.0
 ---
 
@@ -314,12 +314,32 @@ When making structural decisions:
 | Tight coupling | Hard to change | Depend on abstractions |
 | Leaky abstraction | Exposes internals | Hide implementation details |
 
-## When to Use /analyze-architecture Command
+## Full Workflows (Use Commands)
 
-Use the `/analyze-architecture` command when you need:
-- Comprehensive architecture documentation
-- Dependency graphs and visualizations
-- Architecture Decision Records (ADRs)
+For comprehensive architecture operations:
+
+### Analyze Architecture
+```
+/code-architect:analyze-architecture
+```
+**Use when:** Need comprehensive architecture analysis with Mermaid diagrams, dependency graphs, and visualizations.
+
+### Generate Architecture Docs
+```
+/code-architect:generate-docs
+```
+**Use when:** Need comprehensive architecture documentation including:
 - System design documents
+- Technical specifications
+- Architecture Decision Records (ADRs)
+- Component documentation
 
-The skill provides thinking patterns; the command produces documentation artifacts.
+The skill provides thinking patterns; the commands produce documentation artifacts.
+
+### Agent Options
+
+For targeted analysis, use the Task tool with agents:
+
+1. **Diagrams**: Launch `code-architect:architecture-mapper` for Mermaid diagram generation
+2. **Dependencies**: Launch `code-architect:dependency-analyzer` for dependency visualization
+3. **Docs**: Launch `code-architect:documentation-generator` for comprehensive docs
