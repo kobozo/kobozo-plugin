@@ -2,44 +2,64 @@
 description: This skill should be used when the user asks to "fix bug", "debug this", "fix this issue", "investigate bug", "troubleshoot", "find the bug", or needs help analyzing and fixing bugs in their code. Provides systematic bug fixing methodology.
 ---
 
-# Bug Fixing Skill
+# Bug Fixing Workflow
 
-Systematically analyze, fix, and validate bugs using a comprehensive workflow that ensures quality and prevents regressions.
+**YOU MUST FOLLOW THIS WORKFLOW SEQUENTIALLY. DO NOT SKIP PHASES.**
 
-## When to Use
+When this skill is triggered, execute the following phases in order. Each phase has specific actions and stop points.
 
-- User reports a bug to investigate
-- Error messages need analysis
-- Code isn't behaving as expected
-- Debugging complex issues
-- Investigating production incidents
+## Core Principles
 
-## Bug Fixing Workflow
+- **Ask Before Acting**: Always clarify bug details before starting
+- **Understand Root Cause**: Don't just fix symptoms, find the actual cause
+- **Test Thoroughly**: Test the fix, edge cases, and check for regressions
+- **Use TodoWrite**: Track all progress throughout - this is MANDATORY
 
-### Phase 1: Understand the Bug
-Before fixing, gather complete information:
+---
 
-**Questions to Answer:**
-1. What is the **expected behavior**?
-2. What is the **actual behavior**?
-3. What are the **reproduction steps**?
-4. What **error messages** appear?
-5. Is it **consistent** or intermittent?
-6. What **recent changes** might be related?
+## Phase 1: Discovery
 
-### Phase 2: Analyze Root Cause
-Trace through the code to identify the actual cause:
+**Announce**: "🐛 **Phase 1: Discovery** - Understanding the bug"
 
-**Analysis Steps:**
-1. Read error messages and stack traces
-2. Trace code flow from trigger to error
-3. Identify affected components
-4. Check for similar issues in codebase
-5. Document edge cases discovered
+**Actions**:
+1. Create todo list with all 7 phases using TodoWrite
+2. Mark Phase 1 as in_progress
+3. Clarify bug description with user:
+   - What is the **expected behavior**?
+   - What is the **actual behavior**?
+   - What are the **reproduction steps**?
+   - What **error messages** appear?
+   - Is it **consistent** or intermittent?
+   - What **recent changes** might be related?
 
-**Output Template:**
+4. Summarize your understanding of the bug
+
+**STOP**: Present summary and wait for user confirmation before proceeding.
+
+---
+
+## Phase 2: Bug Analysis
+
+**Announce**: "🔍 **Phase 2: Bug Analysis** - Identifying root cause"
+
+**Actions**:
+1. Mark Phase 2 as in_progress in TodoWrite
+2. Launch 1-2 `bug-fixer:bug-analyzer` agents to:
+   - Trace execution paths from trigger to error
+   - Identify root cause (not just symptoms)
+   - Map affected components
+   - Document error propagation
+   - Identify edge cases
+
+3. Review agent findings:
+   - Root cause identification
+   - Impact assessment
+   - Edge cases to consider
+   - Related areas to check
+
+4. Present analysis summary:
 ```markdown
-## Bug Analysis
+## Bug Analysis Summary
 
 **Root Cause**: [Description]
 **Location**: [file:line]
@@ -51,52 +71,198 @@ Trace through the code to identify the actual cause:
 2. [Case 2]
 ```
 
-### Phase 3: Design Fix Approach
-Consider multiple approaches before implementing:
+---
 
-**Approach Types:**
+## Phase 3: Clarifying Questions
 
-1. **Minimal Fix**
-   - Quick, addresses immediate issue
-   - Low risk, minimal changes
-   - May not prevent similar issues
+**Announce**: "❓ **Phase 3: Clarifying Questions** - Resolving ambiguities"
 
-2. **Defensive Programming**
-   - Adds validation and error handling
-   - Prevents similar issues
-   - More comprehensive
+**CRITICAL - DO NOT SKIP THIS PHASE**
 
-3. **Refactoring**
-   - Restructures code
-   - Eliminates root cause
-   - Higher risk but cleaner
+**Actions**:
+1. Mark Phase 3 as in_progress in TodoWrite
+2. Identify underspecified aspects:
+   - How should invalid input be handled?
+   - Should errors be shown to user or logged silently?
+   - What error messages should users see?
+   - Should these errors be logged for monitoring?
+   - Are there performance considerations?
 
-**Decision Criteria:**
-- Urgency of fix
-- Risk tolerance
-- Long-term maintainability
-- Test coverage
+3. **Present all questions to user in a clear, organized list**
 
-### Phase 4: Implement Fix
-Apply the chosen approach:
+**STOP**: Wait for user answers before proceeding. If user says "whatever you think is best", provide your recommendation and get explicit confirmation.
 
-**Implementation Checklist:**
-- [ ] Read relevant existing code
-- [ ] Follow codebase conventions
-- [ ] Add validation where needed
-- [ ] Handle edge cases
-- [ ] Write clear error messages
-- [ ] Add/update tests
+---
 
-### Phase 5: Validate
-Ensure fix works and doesn't break anything:
+## Phase 4: Fix Design
 
-**Validation Steps:**
-1. Run existing test suite
-2. Test bug reproduction (should fail)
-3. Test edge cases
-4. Check for regressions
-5. Review code quality
+**Announce**: "🏗️ **Phase 4: Fix Design** - Designing the fix approach"
+
+**Actions**:
+1. Mark Phase 4 as in_progress in TodoWrite
+2. Launch 1-2 `bug-fixer:fix-implementer` agents to:
+   - Analyze codebase patterns
+   - Evaluate multiple fix approaches
+   - Provide implementation blueprint
+
+3. Present fix approach options:
+
+### Approach Options
+
+**Option A: Minimal Fix**
+- Quick, addresses immediate issue
+- Low risk, minimal changes
+- May not prevent similar issues
+
+**Option B: Defensive Programming**
+- Adds validation and error handling
+- Prevents similar issues
+- More comprehensive
+
+**Option C: Refactoring**
+- Restructures code
+- Eliminates root cause
+- Higher risk but cleaner
+
+4. Present your recommendation with reasoning:
+```markdown
+## Recommended Approach: [Name]
+
+**What**: [Description of changes]
+
+**Changes**:
+1. [Change 1]
+2. [Change 2]
+
+**Pros**: [Benefits]
+**Cons**: [Trade-offs]
+
+**Files to modify**:
+- [file 1]
+- [file 2]
+```
+
+**STOP**: Ask user which approach they prefer. Wait for answer before proceeding.
+
+---
+
+## Phase 5: Implementation
+
+**Announce**: "⚙️ **Phase 5: Implementation** - Implementing the fix"
+
+**DO NOT START WITHOUT USER APPROVAL OF FIX APPROACH**
+
+**Actions**:
+1. Mark Phase 5 as in_progress in TodoWrite
+2. Read all relevant files identified in analysis
+3. Implement the approved fix:
+   - Follow the implementation blueprint
+   - Add validation and error handling as needed
+   - Update types if needed
+   - Follow codebase conventions
+
+4. Write tests:
+   - Unit tests for fixed functions
+   - Edge case tests
+   - Regression tests
+
+5. Update todos as you progress
+
+### Implementation Checklist
+- [ ] Read existing code
+- [ ] Implement validation/fix
+- [ ] Add descriptive error messages
+- [ ] Handle all edge cases
+- [ ] Write unit tests
+- [ ] Write edge case tests
+
+---
+
+## Phase 6: Validation
+
+**Announce**: "✅ **Phase 6: Validation** - Verifying the fix"
+
+**Actions**:
+1. Mark Phase 6 as in_progress in TodoWrite
+2. Launch 2-3 `bug-fixer:test-validator` agents to:
+   - Run existing test suite
+   - Test bug reproduction (should be fixed)
+   - Test edge cases
+   - Check for regressions
+   - Review code quality
+
+3. Consolidate validation results:
+```markdown
+## Validation Results
+
+### Test Suite: ✅/❌
+- Total tests: [X]
+- Passing: [Y]
+- Failing: [Z]
+
+### Bug Reproduction: ✅/❌
+- Original bug status: [Fixed/Still present]
+
+### Edge Cases: ✅/❌
+- [Case 1]: Handled correctly
+- [Case 2]: Handled correctly
+
+### Regressions: ✅/❌
+- [Area 1]: Working
+- [Area 2]: Working
+
+### Code Quality Issues:
+- [Issue 1] (Confidence: X%, Severity: Y)
+- [Issue 2] (Confidence: X%, Severity: Y)
+```
+
+**STOP**: Present validation results and ask user what to do:
+- Fix issues now
+- Fix later
+- Proceed as-is
+
+4. Address issues based on user decision
+
+---
+
+## Phase 7: Summary
+
+**Announce**: "📝 **Phase 7: Summary** - Documenting the fix"
+
+**Actions**:
+1. Mark all todos complete
+2. Summarize:
+```markdown
+## Bug Fix Summary
+
+### Bug Fixed
+**Issue**: [Description]
+**Root Cause**: [What caused it]
+**Severity**: [Level]
+
+### Solution Implemented
+**Approach**: [Which approach was used]
+**Files Changed**:
+- [file 1] - [what changed]
+- [file 2] - [what changed]
+
+**Key Changes**:
+1. [Change 1]
+2. [Change 2]
+
+### Validation Results
+- ✅ All tests passing
+- ✅ Bug fixed
+- ✅ Edge cases handled
+- ✅ No regressions
+
+### Next Steps
+1. [Deploy to staging]
+2. [Monitor in production]
+3. [Follow-up tasks if any]
+```
+
+---
 
 ## Common Bug Patterns
 
@@ -105,7 +271,7 @@ Ensure fix works and doesn't break anything:
 // Bad: Implicit check
 if (!user) return;
 
-// Good: Explicit check
+// Good: Explicit check with error
 if (user === null || user === undefined) {
   throw new Error('User is required');
 }
@@ -129,90 +295,7 @@ const result = asyncFunction();
 const result = await asyncFunction();
 ```
 
-### Race Conditions
-```typescript
-// Bad: Uncontrolled concurrent access
-data.value = newValue;
-
-// Good: Synchronized access
-await mutex.runExclusive(async () => {
-  data.value = newValue;
-});
-```
-
-## Error Handling Patterns
-
-### Good Error Messages
-```typescript
-// Bad: Vague error
-throw new Error('Invalid input');
-
-// Good: Descriptive error
-throw new Error(
-  `Invalid discount code '${code}': must be alphanumeric and 6-10 characters`
-);
-```
-
-### Validation Pattern
-```typescript
-const validateOrder = (order: unknown): Order => {
-  if (!order || typeof order !== 'object') {
-    throw new ValidationError('Order must be an object');
-  }
-  if (typeof (order as any).total !== 'number') {
-    throw new ValidationError('Order.total must be a number');
-  }
-  return order as Order;
-};
-```
-
-## Testing the Fix
-
-### Test the Bug
-```typescript
-it('should handle invalid discount code without crashing', () => {
-  expect(() => processPayment(orderWithInvalidCode))
-    .toThrow(/Invalid discount code/);
-});
-```
-
-### Test Edge Cases
-```typescript
-it('should handle empty discount code', () => {
-  expect(() => processPayment({ discountCode: '' }))
-    .toThrow(ValidationError);
-});
-
-it('should handle null order', () => {
-  expect(() => processPayment(null))
-    .toThrow('Order is required');
-});
-```
-
-### Test No Regressions
-```typescript
-it('should still process valid orders', () => {
-  const result = processPayment(validOrder);
-  expect(result.success).toBe(true);
-});
-```
-
-## Invoke Full Workflow
-
-For comprehensive bug fixing with specialized agents:
-
-**Use the Task tool** to launch bug fixing agents:
-
-1. **Bug Analysis**: Launch `bug-fixer:bug-analyzer` agent to trace execution paths and identify root cause
-2. **Fix Design**: Launch `bug-fixer:fix-implementer` agent to design and implement the fix
-3. **Validation**: Launch `bug-fixer:test-validator` agent to verify fix and check for regressions
-
-**Example prompt for agent:**
-```
-Fix bug: TypeError when invalid discount code is used in payment processing.
-Expected: Show error message to user.
-Actual: Application crashes with TypeError.
-```
+---
 
 ## Quick Reference
 
@@ -232,10 +315,10 @@ Actual: Application crashes with TypeError.
 | Recurring bugs | Refactoring |
 | Complex logic | Defensive |
 
-### Debugging Checklist
-- [ ] Can reproduce the bug
-- [ ] Understand expected behavior
-- [ ] Found root cause (not symptom)
-- [ ] Considered edge cases
-- [ ] Fix tested locally
-- [ ] No regressions detected
+### Stop Points Summary
+| After Phase | Stop For |
+|-------------|----------|
+| Phase 1 | Confirm bug understanding |
+| Phase 3 | Answer clarifying questions |
+| Phase 4 | Choose fix approach |
+| Phase 6 | Address validation issues |
