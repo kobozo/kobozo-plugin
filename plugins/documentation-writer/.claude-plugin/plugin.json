@@ -1,6 +1,6 @@
 {
   "name": "documentation-writer",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Generate comprehensive documentation for GitHub wikis - technical docs, API references, tutorials, and guides written to ./docs directory",
   "author": {
     "name": "Yannick De Backer",

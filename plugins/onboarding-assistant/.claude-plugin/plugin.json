@@ -1,6 +1,6 @@
 {
   "name": "onboarding-assistant",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Create interactive user onboarding experiences - guided tours, product walkthroughs, tooltips, and step-by-step flows",
   "author": {
     "name": "Yannick De Backer",

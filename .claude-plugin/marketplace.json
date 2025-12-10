@@ -33,7 +33,7 @@
     {
       "name": "test-suite-generator",
       "description": "Test generation by skill - say 'generate tests' for unit/integration tests, 'coverage report' for analysis, keeps commands for file-based operations",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"

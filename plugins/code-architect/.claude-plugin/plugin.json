@@ -1,6 +1,6 @@
 {
   "name": "code-architect",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Architecture thinking by default - skill provides design patterns and system decomposition guidance, commands generate documentation with diagrams and ADRs",
   "author": {
     "name": "Yannick De Backer",

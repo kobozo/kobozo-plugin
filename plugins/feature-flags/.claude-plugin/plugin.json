@@ -1,6 +1,6 @@
 {
   "name": "feature-flags",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Intelligent feature flag detection and implementation - analyzes existing patterns, integrates with feature-dev, supports LaunchDarkly, Unleash, environment-based, config files, database, and pub/sub patterns",
   "author": {
     "name": "Yannick De Backer",

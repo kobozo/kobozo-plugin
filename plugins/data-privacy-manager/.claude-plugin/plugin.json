@@ -1,6 +1,6 @@
 {
   "name": "data-privacy-manager",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Manage data privacy compliance, GDPR requirements, data anonymization, and privacy policy generation",
   "author": {
     "name": "Yannick De Backer",

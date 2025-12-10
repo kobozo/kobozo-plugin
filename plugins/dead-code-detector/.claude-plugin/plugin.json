@@ -1,6 +1,6 @@
 {
   "name": "dead-code-detector",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Clean codebases by default - hooks catch orphaned code after edits, skill teaches dead code patterns, commands run comprehensive scans",
   "author": {
     "name": "Yannick De Backer",

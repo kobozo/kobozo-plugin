@@ -1,6 +1,6 @@
 {
   "name": "image-generator",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "AI image generation with intelligent prompt engineering - supports Nano Banana (Gemini) and DALL-E with style guide integration",
   "author": {
     "name": "Yannick De Backer",

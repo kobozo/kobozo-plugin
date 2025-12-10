@@ -1,6 +1,6 @@
 {
   "name": "brainstorm",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Research-driven brainstorming - skill provides methodology for exploring ideas, command generates comprehensive implementation specifications with documentation",
   "author": {
     "name": "Yannick De Backer",

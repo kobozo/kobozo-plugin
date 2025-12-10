@@ -1,6 +1,6 @@
 {
   "name": "db-schema-manager",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Manage database schemas, generate migrations, analyze relationships, and design optimal data models",
   "author": {
     "name": "Yannick De Backer",
