@@ -1,9 +1,0 @@
-{
-  "name": "feature-dev",
-  "version": "2.1.0",
-  "description": "Enhanced feature development workflow with intelligent multi-agent implementation - automatically parallelizes complex features while enforcing OOP principles, SOLID design, and proper design patterns. Includes ChunkHound integration for semantic code search.",
-  "author": {
-    "name": "Sid Bidasaria",
-    "email": "sbidasaria@anthropic.com"
-  }
-}
