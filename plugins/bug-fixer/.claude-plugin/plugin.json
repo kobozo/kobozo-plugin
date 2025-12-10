@@ -1,6 +1,6 @@
 {
   "name": "bug-fixer",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Comprehensive bug fixing workflow with specialized agents for bug analysis, fix implementation, and test validation",
   "author": {
     "name": "Yannick De Backer",

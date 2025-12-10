@@ -143,7 +143,7 @@
     {
       "name": "bug-fixer",
       "description": "Bug fixing by skill - say 'fix bug' or 'debug this' for systematic analysis, fix design, and validation with specialized agents",
-      "version": "2.0.0",
+      "version": "2.1.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -187,7 +187,7 @@
     {
       "name": "feature-dev",
       "description": "Feature development by skill - say 'build feature' or 'implement' for systematic 8-phase development with OOP principles and multi-agent coordination",
-      "version": "2.0.0",
+      "version": "2.1.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
