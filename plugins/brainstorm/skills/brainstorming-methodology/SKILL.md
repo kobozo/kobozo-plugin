@@ -1,7 +1,7 @@
 ---
 name: Brainstorming Methodology
-description: This skill should be used when the user wants to explore a new feature idea, plan a major change, evaluate technology options, or needs help thinking through implementation approaches. Provides systematic research-driven brainstorming methodology for exploring ideas before coding. Use when user says "let's think about", "how should we approach", "what's the best way to", or "I'm considering".
-version: 1.0.0
+description: This skill should be used when the user mentions "new idea", "new feature", "I have an idea", "brainstorm", "let's explore", "let's think about", "how should we approach", "what's the best way to", "I'm considering", "evaluate options", or wants to explore implementation approaches before coding. Provides systematic research-driven brainstorming methodology.
+version: 1.0.1
 ---
 
 # Brainstorming Methodology

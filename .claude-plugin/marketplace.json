@@ -164,8 +164,8 @@
     },
     {
       "name": "brainstorm",
-      "description": "Research-driven brainstorming - skill provides methodology for exploring ideas, command generates comprehensive implementation specifications with documentation",
-      "version": "2.0.0",
+      "description": "Brainstorming by skill - say 'new idea', 'new feature', 'brainstorm', or 'let's explore' for research-driven ideation before coding",
+      "version": "2.0.1",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
