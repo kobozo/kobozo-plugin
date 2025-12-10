@@ -1,7 +1,7 @@
 {
   "$schema": "https://github.com/anthropics/claude-code/blob/main/schemas/marketplace.schema.json",
   "name": "kobozo-plugins",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Kobozo's custom Claude Code plugins for UI development and style guide management",
   "owner": {
     "name": "Yannick De Backer",
@@ -10,8 +10,8 @@
   "plugins": [
     {
       "name": "ui-checker",
-      "description": "Automated UI validation and creation - validate against style guides with Playwright, create beautiful React components with Tailwind CSS, manage design systems following Loveable's approach",
-      "version": "2.0.0",
+      "description": "Design system by skill - natural language triggers for UI validation, component creation, and style guide management with Playwright and Tailwind CSS",
+      "version": "2.1.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -21,8 +21,8 @@
     },
     {
       "name": "api-documenter",
-      "description": "Automatically generate and maintain API documentation with OpenAPI/Swagger specs and human-readable docs",
-      "version": "1.0.0",
+      "description": "API documentation by skill - say 'document API' to generate OpenAPI specs and human-readable docs with specialized agents",
+      "version": "2.0.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -32,8 +32,8 @@
     },
     {
       "name": "test-suite-generator",
-      "description": "Generate comprehensive test suites with high coverage - unit tests, integration tests, and coverage analysis",
-      "version": "1.0.0",
+      "description": "Test generation by skill - say 'generate tests' for unit/integration tests, 'coverage report' for analysis, keeps commands for file-based operations",
+      "version": "1.1.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -43,8 +43,8 @@
     },
     {
       "name": "security-auditor",
-      "description": "Security by default - proactive hooks block vulnerabilities, skill provides OWASP awareness, commands run comprehensive audits",
-      "version": "2.0.0",
+      "description": "Security by skill - say 'security audit' or 'check vulnerabilities' for comprehensive scans, hooks block vulnerabilities proactively",
+      "version": "2.1.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -54,8 +54,8 @@
     },
     {
       "name": "performance-optimizer",
-      "description": "Performance by default - hooks catch N+1 queries and anti-patterns, skill teaches optimization patterns, commands run deep profiling",
-      "version": "2.0.0",
+      "description": "Performance by skill - say 'profile performance' or 'optimize bundle' for analysis, hooks catch N+1 queries proactively",
+      "version": "2.1.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -65,8 +65,8 @@
     },
     {
       "name": "data-privacy-manager",
-      "description": "Manage data privacy compliance - GDPR audits, data anonymization, privacy policy generation, and consent management",
-      "version": "1.0.0",
+      "description": "Privacy compliance by skill - say 'privacy audit' or 'GDPR check' for compliance scans, 'anonymize data' for data protection",
+      "version": "2.0.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -76,8 +76,8 @@
     },
     {
       "name": "db-schema-manager",
-      "description": "Manage database schemas - analyze relationships, generate migrations, detect issues, and design optimal data models",
-      "version": "1.0.0",
+      "description": "Database schema by skill - say 'analyze schema' or 'generate migration' for guidance, commands handle file-based operations",
+      "version": "1.1.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -87,8 +87,8 @@
     },
     {
       "name": "i18n-manager",
-      "description": "Manage internationalization - extract translations, validate locales, optimize i18n configuration, and detect missing translations",
-      "version": "1.0.0",
+      "description": "Internationalization by skill - say 'extract translations' or 'validate locales' for guidance, commands handle file-based operations",
+      "version": "1.1.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -98,8 +98,8 @@
     },
     {
       "name": "onboarding-assistant",
-      "description": "Create interactive user onboarding experiences - guided tours, product walkthroughs, tooltips, and step-by-step flows",
-      "version": "1.0.0",
+      "description": "Onboarding by skill - say 'design onboarding' or 'create product tour' for comprehensive flow design with specialized agents",
+      "version": "2.0.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -109,8 +109,8 @@
     },
     {
       "name": "code-architect",
-      "description": "Architecture thinking by default - skill provides design patterns and system decomposition guidance, commands generate documentation with diagrams and ADRs",
-      "version": "2.0.0",
+      "description": "Architecture by skill - say 'analyze architecture' for design guidance, commands generate Mermaid diagrams and ADRs",
+      "version": "2.1.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -120,8 +120,8 @@
     },
     {
       "name": "clean-code-checker",
-      "description": "Clean code by default - hooks provide real-time feedback, skill teaches SOLID/DRY principles, commands run comprehensive analysis",
-      "version": "2.0.0",
+      "description": "Clean code by skill - say 'analyze code quality' or 'check code smells' for guidance, hooks provide real-time SOLID/DRY feedback",
+      "version": "2.1.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -131,8 +131,8 @@
     },
     {
       "name": "documentation-writer",
-      "description": "Generate comprehensive technical documentation for GitHub wikis - write feature docs, API references, architecture guides, and tutorials to ./docs directory",
-      "version": "1.0.0",
+      "description": "Documentation by skill - say 'document this' or 'write docs for' to generate feature docs, API references, and tutorials",
+      "version": "2.0.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -142,8 +142,8 @@
     },
     {
       "name": "bug-fixer",
-      "description": "Comprehensive bug fixing workflow - analyze root causes, design robust fixes, validate with tests, prevent regressions using specialized agents",
-      "version": "1.0.0",
+      "description": "Bug fixing by skill - say 'fix bug' or 'debug this' for systematic analysis, fix design, and validation with specialized agents",
+      "version": "2.0.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -175,8 +175,8 @@
     },
     {
       "name": "dead-code-detector",
-      "description": "Clean codebases by default - hooks catch orphaned code after edits, skill teaches dead code patterns, commands run comprehensive scans",
-      "version": "2.0.0",
+      "description": "Dead code by skill - say 'find dead code' or 'remove unused code' for scans, hooks catch orphaned code proactively",
+      "version": "2.1.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -186,8 +186,8 @@
     },
     {
       "name": "feature-dev",
-      "description": "Enhanced feature development workflow with intelligent multi-agent implementation - automatically parallelizes complex features, maintains functional programming principles (from official Claude Code)",
-      "version": "1.2.1",
+      "description": "Feature development by skill - say 'build feature' or 'implement' for systematic 8-phase development with OOP principles and multi-agent coordination",
+      "version": "2.0.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -219,8 +219,8 @@
     },
     {
       "name": "pr-review-toolkit",
-      "description": "Comprehensive PR review agents - comments, tests, error handling, type design, code quality, and simplification",
-      "version": "1.0.0",
+      "description": "PR review by skill - say 'review my PR' for comprehensive analysis with specialized agents for comments, tests, errors, types, and simplification",
+      "version": "2.0.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -241,8 +241,8 @@
     },
     {
       "name": "feature-flags",
-      "description": "Intelligent feature flag detection and implementation - analyzes existing patterns, integrates with feature-dev, supports LaunchDarkly, Unleash, environment-based, config files, database, and pub/sub patterns",
-      "version": "1.0.0",
+      "description": "Feature flags by skill - say 'add feature flag' or 'set up feature flags' for implementation guidance, supports multiple patterns",
+      "version": "2.0.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -252,8 +252,8 @@
     },
     {
       "name": "image-generator",
-      "description": "AI image generation with intelligent prompt engineering - supports Nano Banana (Gemini) and DALL-E with style guide integration, reference style transfer, and variation generation",
-      "version": "1.0.0",
+      "description": "Image generation by skill - say 'generate image' or 'create image' for AI image creation with Nano Banana (Gemini) or DALL-E",
+      "version": "2.0.0",
       "author": {
         "name": "Yannick De Backer",
         "email": "yannick@kobozo.eu"
@@ -274,8 +274,8 @@
     },
     {
       "name": "code-review",
-      "description": "Automated pull request code review using specialized agents with confidence-based scoring to filter false positives",
-      "version": "1.0.0",
+      "description": "Code review by skill - say 'code review' or 'review PR' for automated PR review with confidence-based scoring",
+      "version": "2.0.0",
       "author": {
         "name": "Anthropic",
         "email": "noreply@anthropic.com"
