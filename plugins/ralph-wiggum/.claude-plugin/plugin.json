@@ -1,0 +1,9 @@
+{
+  "name": "ralph-wiggum",
+  "version": "2.0.0",
+  "description": "Multi-agent development loop - Dev, Code Review, QA, and Doc Writer agents work together with quality gates and targeted feedback for iterative refinement",
+  "author": {
+    "name": "Yannick De Backer",
+    "email": "yannick@kobozo.eu"
+  }
+}

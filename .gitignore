@@ -1,1 +1,7 @@
 .chunkhound
+.chief-wiggum
+tasks
+.chief-wiggum-last-branch
+firebase-debug.log
+prd.json
+progress.txt
