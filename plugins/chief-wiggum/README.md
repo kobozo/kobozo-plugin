@@ -167,6 +167,22 @@ feedback_history: []
 ---
 ```
 
+## Self-Learning
+
+Chief Wiggum learns from mistakes and records patterns to `CLAUDE.md`:
+
+- **Code Review Agent**: Records code patterns after rejections
+- **QA Agent**: Records testing patterns after failures
+- **Dev Agent**: Reads learnings before implementing
+
+Learnings are stored in `## Chief Wiggum Learnings` section (max 10 entries):
+```markdown
+## Chief Wiggum Learnings
+
+- **Null check**: Always check `user.settings` before accessing nested props
+- **API routes**: Use `withAuth` wrapper for all /api/admin/* endpoints
+```
+
 ## Blocked Handling
 
 If a story outputs `<promise>BLOCKED</promise>`, Chief Wiggum:

@@ -23,13 +23,18 @@ Read the state file at `.chief-wiggum/state.md` to understand:
 - Any feedback in the `feedback_history` YAML field
 - Current iteration count
 
+**Also check `CLAUDE.md`** for the `## Chief Wiggum Learnings` section:
+- These are patterns learned from previous mistakes
+- Apply them to avoid repeating the same issues
+
 ## Implementation Process
 
 1. **Read the story requirements** from the state file
-2. **Check for pending feedback** in `feedback_history` with `addressed: false`
-3. **Implement or fix** based on requirements/feedback
-4. **Run quality checks** (typecheck, lint, tests if applicable)
-5. **Transition to code-review** when all criteria are met
+2. **Check CLAUDE.md** for learnings to apply
+3. **Check for pending feedback** in `feedback_history` with `addressed: false`
+4. **Implement or fix** based on requirements/feedback/learnings
+5. **Run quality checks** (typecheck, lint, tests if applicable)
+6. **Transition to code-review** when all criteria are met
 
 ## Addressing Feedback
 

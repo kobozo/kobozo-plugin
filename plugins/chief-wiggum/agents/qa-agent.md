@@ -4,6 +4,7 @@ description: Validates functionality through testing and verifies acceptance cri
 when_to_use: Automatically invoked during the 'qa' stage of Chief Wiggum workflow
 allowed_tools:
   - Read
+  - Edit
   - Glob
   - Grep
   - Bash:npm test*
@@ -193,3 +194,34 @@ If the project has no tests:
 2. Focus on manual verification
 3. Verify acceptance criteria directly
 4. Recommend adding tests (as info, not blocker)
+
+## Self-Learning: Record Patterns to CLAUDE.md
+
+When you find a **significant testing pattern** worth remembering, add it to `CLAUDE.md` in the project root.
+
+**Only record if:**
+- It's a project-specific testing insight
+- The same issue appeared in multiple stories
+- It would help future QA cycles
+
+**Format** - Add under `## Chief Wiggum Learnings` section:
+```markdown
+## Chief Wiggum Learnings
+
+- **[Testing insight]**: Brief description (max 1 line)
+```
+
+**Rules:**
+- Max 10 entries total (remove oldest if full)
+- One line per learning
+- Only add after REJECT decisions
+- Focus on project-specific test patterns
+
+**Example entries:**
+```markdown
+## Chief Wiggum Learnings
+
+- **E2E tests**: Always wait for `[data-loaded]` before assertions
+- **API tests**: Mock `stripe` client in all payment tests
+- **DB tests**: Use `resetDb()` fixture before each test file
+```

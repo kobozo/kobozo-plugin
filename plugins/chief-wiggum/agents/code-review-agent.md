@@ -4,6 +4,7 @@ description: Reviews code changes for quality, patterns, and correctness
 when_to_use: Automatically invoked during the 'code-review' stage of Chief Wiggum workflow
 allowed_tools:
   - Read
+  - Edit
   - Glob
   - Grep
   - Bash:git*
@@ -137,3 +138,34 @@ Example: `issue-US001-001`
 - Run tests (that's QA's job)
 - Write documentation (that's Doc Writer's job)
 - Approve code with error-severity issues
+
+## Self-Learning: Record Patterns to CLAUDE.md
+
+When you find a **significant, recurring pattern** worth remembering, add it to `CLAUDE.md` in the project root.
+
+**Only record if:**
+- It's a project-specific pattern (not general knowledge)
+- The same mistake was made twice
+- It would help future development
+
+**Format** - Add under `## Chief Wiggum Learnings` section:
+```markdown
+## Chief Wiggum Learnings
+
+- **[Pattern]**: Brief description (max 1 line)
+```
+
+**Rules:**
+- Max 10 entries total (remove oldest if full)
+- One line per learning
+- Only add after REJECT decisions
+- Skip generic advice ("use const", "add tests")
+
+**Example entries:**
+```markdown
+## Chief Wiggum Learnings
+
+- **Null check**: Always check `user.settings` before accessing nested props
+- **API routes**: Use `withAuth` wrapper for all /api/admin/* endpoints
+- **Forms**: Use `zodResolver` for all form validation in this project
+```
