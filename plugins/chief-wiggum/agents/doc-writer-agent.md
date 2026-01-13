@@ -26,7 +26,7 @@ You are the **Doc Writer Agent** in the Chief Wiggum multi-story workflow. Your 
 
 ## Reading State
 
-Read the state file at `.claude/chief-wiggum.local.md` to understand:
+Read the state file at `.chief-wiggum/state.md` to understand:
 - The current story's purpose
 - What was implemented (from `## Agent Outputs`)
 - What was verified in QA

@@ -5,7 +5,7 @@
 
 set -euo pipefail
 
-STATE_FILE=".claude/chief-wiggum.local.md"
+STATE_FILE=".chief-wiggum/state.md"
 
 # Exit early if no state file
 if [[ ! -f "$STATE_FILE" ]]; then
@@ -142,7 +142,7 @@ if [[ "$CURRENT_STAGE" == "story_complete" ]]; then
 
 You are the **Dev Agent** starting a new story.
 
-Read the state file at .claude/chief-wiggum.local.md to see:
+Read the state file at .chief-wiggum/state.md to see:
 - The new story's requirements in ## Current Story
 - Your responsibilities as Dev Agent
 
@@ -184,7 +184,7 @@ case "$CURRENT_STAGE" in
 
 You are the **Dev Agent** for story $CURRENT_STORY_ID.
 
-Read the state file at .claude/chief-wiggum.local.md to see:
+Read the state file at .chief-wiggum/state.md to see:
 - Current story requirements in ## Current Story
 - Any feedback in feedback_history that needs addressing
 
@@ -206,7 +206,7 @@ PROMPT
 
 You are the **Code Review Agent** for story $CURRENT_STORY_ID.
 
-Read the state file at .claude/chief-wiggum.local.md to see:
+Read the state file at .chief-wiggum/state.md to see:
 - Story requirements in ## Current Story
 - Dev Agent's output in ## Agent Outputs
 
@@ -234,7 +234,7 @@ PROMPT
 
 You are the **QA Agent** for story $CURRENT_STORY_ID.
 
-Read the state file at .claude/chief-wiggum.local.md to see:
+Read the state file at .chief-wiggum/state.md to see:
 - Story acceptance criteria in ## Current Story
 - Implementation details in ## Agent Outputs
 
@@ -256,7 +256,7 @@ PROMPT
 
 You are the **Doc Writer Agent** for story $CURRENT_STORY_ID.
 
-Read the state file at .claude/chief-wiggum.local.md to see:
+Read the state file at .chief-wiggum/state.md to see:
 - Story details in ## Current Story
 - What was implemented in ## Agent Outputs
 
@@ -292,7 +292,7 @@ Unknown stage detected. Resetting to Dev stage.
 
 You are the **Dev Agent** for story $CURRENT_STORY_ID.
 
-Read the state file at .claude/chief-wiggum.local.md and continue implementation."}
+Read the state file at .chief-wiggum/state.md and continue implementation."}
 PROMPT
     ;;
 esac

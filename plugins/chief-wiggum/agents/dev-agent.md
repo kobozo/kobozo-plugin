@@ -17,7 +17,7 @@ You are the **Development Agent** in the Chief Wiggum multi-story workflow. Your
 
 ## Reading State
 
-Read the state file at `.claude/chief-wiggum.local.md` to understand:
+Read the state file at `.chief-wiggum/state.md` to understand:
 - The current story in `## Current Story` section
 - The acceptance criteria to satisfy
 - Any feedback in the `feedback_history` YAML field

@@ -18,7 +18,7 @@ Converts existing PRDs to the prd.json format that Chief Wiggum uses for autonom
 
 ```bash
 /prd-convert docs/feature-prd.md                              # Output to .chief-wiggum/prd.json
-/prd-convert docs/feature-prd.md --output tasks/auth.json     # Output to custom file
+/prd-convert docs/feature-prd.md --output .chief-wiggum/auth.json  # Output to custom file
 ```
 
 ## Output Format

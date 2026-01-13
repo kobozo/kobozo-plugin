@@ -26,9 +26,9 @@ Execute all user stories from a PRD JSON file autonomously. Each story runs thro
 
 ```bash
 /chief-wiggum                                    # Uses default PRD file
-/chief-wiggum tasks/prd-auth.json               # Specify PRD file
-/chief-wiggum tasks/prd.json --branch feature/custom-name
-/chief-wiggum tasks/prd.json --skip-docs --max-iterations 30
+/chief-wiggum .chief-wiggum/prd.json            # Specify PRD file
+/chief-wiggum .chief-wiggum/auth.json --branch feature/custom-name
+/chief-wiggum .chief-wiggum/prd.json --skip-docs --max-iterations 30
 ```
 
 ## How It Works
@@ -63,8 +63,8 @@ Execute all user stories from a PRD JSON file autonomously. Each story runs thro
 
 ## Monitoring
 
-- **State file**: `.claude/chief-wiggum.local.md`
-- **View progress**: `head -50 .claude/chief-wiggum.local.md`
+- **State file**: `.chief-wiggum/state.md`
+- **View progress**: `head -50 .chief-wiggum/state.md`
 - **Cancel**: `/cancel-chief-wiggum`
 
 ## Warning
@@ -79,7 +79,7 @@ Run the setup script to initialize the workflow:
 ${CLAUDE_PLUGIN_ROOT}/scripts/setup-chief-wiggum.sh $ARGUMENTS
 ```
 
-After setup completes, you are the **Dev Agent** for the first story. Read the state file at `.claude/chief-wiggum.local.md` to see:
+After setup completes, you are the **Dev Agent** for the first story. Read the state file at `.chief-wiggum/state.md` to see:
 
 - Current story requirements in `## Current Story`
 - Your responsibilities as Dev Agent

@@ -41,9 +41,9 @@ DESCRIPTION:
   4. Exits when all stories are done
 
 EXAMPLES:
-  /chief-wiggum tasks/prd-auth.json
-  /chief-wiggum tasks/prd.json --branch feature/custom-name
-  /chief-wiggum tasks/prd.json --skip-docs --max-iterations 30
+  /chief-wiggum .chief-wiggum/prd.json
+  /chief-wiggum .chief-wiggum/auth-prd.json --branch feature/custom-name
+  /chief-wiggum .chief-wiggum/prd.json --skip-docs --max-iterations 30
 
 PRD JSON FORMAT:
   {
@@ -104,7 +104,7 @@ if [[ -z "$PRD_FILE" ]]; then
   echo "❌ Error: No PRD file provided" >&2
   echo "" >&2
   echo "   Usage: /chief-wiggum <prd-file>" >&2
-  echo "   Example: /chief-wiggum tasks/prd-auth.json" >&2
+  echo "   Example: /chief-wiggum .chief-wiggum/prd.json" >&2
   exit 1
 fi
 
@@ -159,12 +159,12 @@ FIRST_STORY_TITLE=$(jq -r '.userStories[0].title' "$PRD_FILE")
 FIRST_STORY_DESC=$(jq -r '.userStories[0].description' "$PRD_FILE")
 FIRST_STORY_CRITERIA=$(jq -r '.userStories[0].acceptanceCriteria | map("- [ ] " + .) | join("\n")' "$PRD_FILE")
 
-# Create state file directory
-mkdir -p .claude
+# Create chief-wiggum directory
+mkdir -p .chief-wiggum
 
 # Create state file with all stories loaded
 # State file schema for multi-story + multi-stage tracking
-cat > .claude/chief-wiggum.local.md <<EOF
+cat > .chief-wiggum/state.md <<EOF
 ---
 active: true
 iteration: 1
@@ -218,7 +218,7 @@ The stop hook is now active. When you try to exit:
 5. Story completes → advances to next story
 6. All stories complete → loop exits
 
-To monitor: head -30 .claude/chief-wiggum.local.md
+To monitor: head -30 .chief-wiggum/state.md
 To cancel: /cancel-chief-wiggum
 
 ⚠️  WARNING: This loop runs until all stories complete or BLOCKED!

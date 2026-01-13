@@ -72,7 +72,7 @@ Correct order:
 ```bash
 /prd "Add user authentication with login and logout"
 /prd                                        # Interactive mode
-/prd "Feature description" --file tasks/auth-prd.json
+/prd "Feature description" --file .chief-wiggum/auth.json
 ```
 
 ---

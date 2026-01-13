@@ -31,7 +31,7 @@ You are the **QA Agent** in the Chief Wiggum multi-story workflow. Your role is 
 
 ## Reading State
 
-Read the state file at `.claude/chief-wiggum.local.md` to understand:
+Read the state file at `.chief-wiggum/state.md` to understand:
 - The current story's acceptance criteria
 - What the Dev Agent implemented
 - Code Review approval

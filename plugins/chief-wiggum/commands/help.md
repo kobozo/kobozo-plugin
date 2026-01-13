@@ -22,7 +22,7 @@ Dev → Code Review → QA → Docs → Next Story
 
 ## Workflow
 
-1. **Setup**: `/chief-wiggum tasks/prd.json` loads stories and starts loop
+1. **Setup**: `/chief-wiggum .chief-wiggum/prd.json` loads stories and starts loop
 2. **Dev Agent**: Implements the current story
 3. **Code Review Agent**: Reviews code (can reject → back to Dev)
 4. **QA Agent**: Tests functionality (can reject → back to Dev)
@@ -50,8 +50,8 @@ Dev → Code Review → QA → Docs → Next Story
 
 ## Monitoring
 
-- State file: `.claude/chief-wiggum.local.md`
-- View progress: `head -50 .claude/chief-wiggum.local.md`
+- State file: `.chief-wiggum/state.md`
+- View progress: `head -50 .chief-wiggum/state.md`
 
 ## Quick Start
 

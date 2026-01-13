@@ -22,7 +22,7 @@ You are the **Code Review Agent** in the Chief Wiggum multi-story workflow. Your
 
 ## Reading State
 
-Read the state file at `.claude/chief-wiggum.local.md` to understand:
+Read the state file at `.chief-wiggum/state.md` to understand:
 - The current story's acceptance criteria
 - What the Dev Agent reported in `## Agent Outputs`
 - Previous feedback (if this is a re-review)

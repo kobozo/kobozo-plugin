@@ -24,7 +24,7 @@ Cancels the active Chief Wiggum workflow by deactivating the state file.
 Check if there's an active Chief Wiggum loop and cancel it:
 
 ```bash
-STATE_FILE=".claude/chief-wiggum.local.md"
+STATE_FILE=".chief-wiggum/state.md"
 
 if [[ ! -f "$STATE_FILE" ]]; then
   echo "❌ No Chief Wiggum state file found"

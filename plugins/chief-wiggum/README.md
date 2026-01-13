@@ -9,7 +9,7 @@ Chief Wiggum reads a PRD JSON file containing user stories and executes them one
 ## Workflow
 
 ```
-/chief-wiggum tasks/prd.json
+/chief-wiggum .chief-wiggum/prd.json
          ↓
    Load all stories
          ↓
@@ -37,12 +37,12 @@ Chief Wiggum reads a PRD JSON file containing user stories and executes them one
 /prd "Build a user authentication system with login, logout, and password reset"
 ```
 
-This will ask clarifying questions and generate `tasks/prd-auth.json`.
+This will ask clarifying questions and generate `.chief-wiggum/prd.json`.
 
 ### 2. Execute the PRD
 
 ```bash
-/chief-wiggum tasks/prd-auth.json
+/chief-wiggum .chief-wiggum/prd.json
 ```
 
 Chief Wiggum will:
@@ -82,7 +82,7 @@ Generate a PRD JSON file from a feature description.
 /prd "Feature description"
 ```
 
-Outputs: `tasks/prd-[feature-name].json`
+Outputs: `.chief-wiggum/prd.json`
 
 ### /cancel-chief-wiggum
 
@@ -143,7 +143,7 @@ Each story goes through four stages:
 
 ## State File
 
-Chief Wiggum maintains state in `.claude/chief-wiggum.local.md`:
+Chief Wiggum maintains state in `.chief-wiggum/state.md`:
 
 ```yaml
 ---
