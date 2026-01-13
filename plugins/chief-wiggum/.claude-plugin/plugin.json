@@ -1,0 +1,9 @@
+{
+  "name": "chief-wiggum",
+  "version": "1.0.0",
+  "description": "PRD-driven story orchestrator - executes user stories sequentially with multi-agent workflow (Dev→Code Review→QA→Docs) using in-context stop hooks",
+  "author": {
+    "name": "Yannick De Backer",
+    "email": "yannick@kobozo.eu"
+  }
+}
