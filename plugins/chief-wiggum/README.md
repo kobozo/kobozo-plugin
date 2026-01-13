@@ -109,13 +109,21 @@ Cancel the active Chief Wiggum loop.
         "Criterion 2",
         "Typecheck passes"
       ],
-      "priority": 1,
-      "passes": false,
-      "notes": ""
+      "testInstructions": "Run npm test src/auth.test.ts. Verify in browser at localhost:3000/login",
+      "priority": 1
     }
   ]
 }
 ```
+
+### Test Instructions (Required)
+
+Each story **must** have `testInstructions` that tell the QA agent how to verify:
+- Test commands to run (`npm test`, `pytest`, etc.)
+- API endpoints to call (`curl http://...`)
+- URLs to check in browser
+- Log files to inspect
+- Build commands to verify
 
 ## Multi-Agent Workflow
 

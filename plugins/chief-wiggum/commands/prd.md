@@ -61,6 +61,7 @@ Correct order:
         "Criterion 2",
         "Typecheck passes"
       ],
+      "testInstructions": "How to verify: [specific steps the QA agent can take to test this story - e.g., run command, check browser, inspect logs, call API endpoint]",
       "priority": 1
     }
   ]
@@ -89,7 +90,12 @@ You are now in PRD generation mode. Your task is to create a comprehensive PRD J
 2. **Users**: Who will use this feature?
 3. **Existing Code**: What existing patterns should be followed?
 4. **Dependencies**: What external services/APIs are involved?
-5. **Testing**: Any specific test requirements?
+5. **Testing (CRITICAL)**: How can each story be tested?
+   - Can I run tests? (`npm test`, `pytest`, etc.)
+   - Can I verify in browser? (URL to check)
+   - Can I check logs? (log file location)
+   - Can I call API endpoints? (curl commands)
+   - Are there CLI commands to verify?
 
 ## After Gathering Requirements
 
@@ -99,12 +105,34 @@ You are now in PRD generation mode. Your task is to create a comprehensive PRD J
    - User story format description
    - Verifiable acceptance criteria
    - "Typecheck passes" as a criterion
+   - **testInstructions** (REQUIRED): Specific steps the QA agent can execute to verify the story works
 3. **Write the JSON file** to the output path
 4. **Save the path** to `.chief-wiggum/current-prd` for auto-detection:
    ```bash
    mkdir -p .chief-wiggum
    echo "/full/path/to/prd.json" > .chief-wiggum/current-prd
    ```
+
+## Test Instructions Examples
+
+Good test instructions tell the QA agent exactly how to verify:
+
+```json
+"testInstructions": "Run `npm test src/auth.test.ts` - all tests should pass. Then verify in browser at http://localhost:3000/login that the form renders."
+```
+
+```json
+"testInstructions": "Call `curl http://localhost:3000/api/users` and verify it returns JSON array. Check server logs at logs/app.log for any errors."
+```
+
+```json
+"testInstructions": "Run `npm run build` and verify no errors. Check dist/ folder contains the bundled files."
+```
+
+Bad test instructions (too vague):
+- "Test that it works"
+- "Verify the feature"
+- "Check the UI"
 
 ## Output Path
 

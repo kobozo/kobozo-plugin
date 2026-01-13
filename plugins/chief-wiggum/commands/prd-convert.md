@@ -38,6 +38,7 @@ Converts existing PRDs to the prd.json format that Chief Wiggum uses for autonom
         "Criterion 2",
         "Typecheck passes"
       ],
+      "testInstructions": "How to verify: [specific commands/steps QA agent can execute]",
       "priority": 1
     }
   ]
@@ -73,6 +74,23 @@ Stories execute in priority order. Earlier stories must not depend on later ones
 3. Priority: Based on dependency order, then document order
 4. **Always add**: "Typecheck passes" to every story's acceptance criteria
 5. **branchName**: Derive from feature name, kebab-case, prefixed with `feature/`
+6. **testInstructions (REQUIRED)**: Add specific verification steps for each story
+
+## Test Instructions
+
+Each story MUST have `testInstructions` that tell the QA agent exactly how to verify:
+
+Good examples:
+- `"Run npm test src/auth.test.ts - all tests should pass"`
+- `"curl http://localhost:3000/api/users should return JSON array"`
+- `"Open http://localhost:3000/login in browser - form should render"`
+- `"Run npm run build - should complete without errors"`
+
+If the PRD doesn't specify how to test, **ask the user** or infer from the story:
+- Schema changes → Run migrations, check database
+- API endpoints → curl commands
+- UI components → Browser verification
+- Build changes → Run build command
 
 ## After Writing
 

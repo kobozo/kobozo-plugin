@@ -8,6 +8,7 @@ allowed_tools:
   - Grep
   - Bash:npm test*
   - Bash:npm run test*
+  - Bash:npm run build*
   - Bash:yarn test*
   - Bash:pnpm test*
   - Bash:bun test*
@@ -16,6 +17,12 @@ allowed_tools:
   - Bash:cargo test*
   - Bash:git*
   - Bash:ls*
+  - Bash:curl*
+  - Bash:cat*
+  - Bash:head*
+  - Bash:tail*
+  - Bash:grep*
+  - mcp__plugin_playwright_playwright__*
 ---
 
 # QA Agent - Testing & Verification
@@ -36,9 +43,23 @@ Read the state file at `.chief-wiggum/state.md` to understand:
 - What the Dev Agent implemented
 - Code Review approval
 
+**Also read the PRD file** (path in `prd_file` field of state file) to get:
+- **testInstructions**: Specific steps to verify this story works
+
 ## Testing Process
 
-### 1. Run Test Suite
+### 1. Follow Test Instructions (PRIORITY)
+
+The PRD contains `testInstructions` for each story. **Execute these first!**
+
+Examples of what test instructions might tell you to do:
+- Run specific test commands: `npm test src/auth.test.ts`
+- Verify in browser: Use Playwright tools to check URL
+- Check logs: `tail -100 logs/app.log`
+- Call API endpoints: `curl http://localhost:3000/api/users`
+- Run build: `npm run build`
+
+### 2. Run Test Suite
 
 ```bash
 npm test          # or yarn test, pnpm test, etc.
@@ -46,14 +67,15 @@ npm run test:unit
 npm run test:integration
 ```
 
-### 2. Verify Acceptance Criteria
+### 3. Verify Acceptance Criteria
 
 For each criterion in the story, verify it's met:
+- Execute the test instructions from the PRD
 - Check manually if needed
 - Confirm test coverage exists
 - Document verification method
 
-### 3. Check Edge Cases
+### 4. Check Edge Cases
 
 Consider:
 - Empty inputs
@@ -61,9 +83,18 @@ Consider:
 - Boundary conditions
 - Error scenarios
 
-### 4. Check for Regressions
+### 5. Check for Regressions
 
 Ensure existing functionality still works.
+
+## Available Testing Tools
+
+You have access to:
+- **Test runners**: npm test, pytest, go test, cargo test
+- **HTTP calls**: curl for API verification
+- **Log inspection**: cat, head, tail, grep for log files
+- **Browser automation**: Playwright MCP tools for UI verification
+- **File inspection**: Read, Glob, Grep for checking outputs
 
 ## Decision: APPROVE
 
